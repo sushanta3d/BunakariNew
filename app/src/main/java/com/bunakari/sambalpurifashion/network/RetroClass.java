@@ -17,11 +17,11 @@ public class RetroClass {
     public static final String BANNER_PATH = BuildConfig.BASE_URL + "admin/images/banner/";
     public static final String CATEGORY_PATH = BuildConfig.BASE_URL + "admin/images/category/";
     public static final String BANNER_CATEGORY_PATH = BuildConfig.BASE_URL + "admin/images/category/";
-    public static final String PRODUCT_PATH1 = BuildConfig.BASE_URL + "admin/images/package/";
-    public static final String PRODUCT_PATH2 = BuildConfig.BASE_URL + "admin/images/package/";
-    public static final String PRODUCT_PATH3 = BuildConfig.BASE_URL + "admin/images/package/";
-    public static final String PRODUCT_PATH4 = BuildConfig.BASE_URL + "admin/images/package/";
-    public static final String PRODUCT_PATH5 = BuildConfig.BASE_URL + "admin/images/package/";
+    public static final String PRODUCT_PATH1 = BuildConfig.BASE_URL + "admin/images/product/thumb1/";
+    public static final String PRODUCT_PATH2 = BuildConfig.BASE_URL + "admin/images/product/thumb2/";
+    public static final String PRODUCT_PATH3 = BuildConfig.BASE_URL + "admin/images/product/thumb3/";
+    public static final String PRODUCT_PATH4 = BuildConfig.BASE_URL + "admin/images/product/thumb4/";
+    public static final String PRODUCT_PATH5 = BuildConfig.BASE_URL + "admin/images/product/thumb5/";
     public static final String USER_IMG_PATH = BuildConfig.BASE_URL + "admin/images/package/";
 
     private static Retrofit getRetofitInstance(){

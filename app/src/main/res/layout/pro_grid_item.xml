@@ -78,6 +78,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="5dp"
+                android:visibility="gone"
                  android:src="@drawable/thumbupblack"/>
 
 
@@ -92,6 +93,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="3dp"
         android:text="likes"
+        android:visibility="gone"
         android:textColor="@color/darkbrown"
         android:textSize="14sp"
  />

@@ -62,7 +62,7 @@ public interface ApiService {
     @GET("api/banners.php")
     Call<BannerList> getBanner();
 
-    @GET("api/cat-listing.php")
+    @GET("api/home-page-listing.php")
     Call<CategoryList> getCategory();
 
     @GET("api/myprofile.php")
@@ -82,7 +82,7 @@ public interface ApiService {
     );
     @GET("api/products.php")
     Call<ProductList> getProducts(@Query("sid") String sid, @Query("mono") String mono);
-    @GET("api/homeproducts.php")
+    @GET("api/products.php")
     Call<ProductList> gethomeProducts(@Query("sid") String sid, @Query("mono") String mono);
     @GET("api/reletedproduct.php")
     Call<ProductList> getRelProducts(@Query("sid") String sid, @Query("mono") String mono);

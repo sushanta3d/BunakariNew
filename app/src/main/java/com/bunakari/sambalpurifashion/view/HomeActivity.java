@@ -183,7 +183,7 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             public void onDrawerOpened(View drawerView) {
-                getSupportActionBar().setTitle("Marriage Arts");
+                getSupportActionBar().setTitle("Bunakari");
                 // calling onPrepareOptionsMenu() to hide action bar icons
                 // invalidateOptionsMenu();
             }
@@ -530,10 +530,7 @@ public class HomeActivity extends AppCompatActivity {
                 // startActivity(homeIntent);
                 finish();
                 return true;
-            case R.id.play:
-                Intent vintent = new Intent(getApplicationContext(),VideosActivity.class);
-                startActivity(vintent);
-                return true;
+
             case R.id.cart:
                 Intent intent = new Intent(getApplicationContext(),CartActivity.class);
                 startActivity(intent);

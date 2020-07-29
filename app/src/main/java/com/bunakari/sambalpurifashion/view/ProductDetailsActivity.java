@@ -951,10 +951,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
                 // startActivity(homeIntent);
                 finish();
                 return true;
-            case R.id.play:
-                Intent vintent = new Intent(getApplicationContext(),VideosActivity.class);
-                startActivity(vintent);
-                return true;
+
             case R.id.cart:
                 Intent intent = new Intent(getApplicationContext(),CartActivity.class);
                 startActivity(intent);
