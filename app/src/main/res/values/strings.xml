@@ -1,0 +1,92 @@
+<resources>
+    <string name="app_name">Pramod Arts</string>
+
+    //login page
+    <string name="loginemailhint">Email</string>
+    <string name="loginpswdhint">Password</string>
+    <string name="logintext">Login</string>
+    <string name="forgottext">Forgot Password?</string>
+    <string name="businesstext1">Already have an account?</string>
+    <string name="signuptext1">Don\'t have an account?</string>
+    <string name="signuptext"><u>SIGN UP</u></string>
+    <string name="signuptext2">SIGN UP</string>
+    <string name="signintext2">SIGN IN</string>
+    <string name="businessregtext2">Connect To Business Account</string>
+
+    //Register Page
+    <string name="regnamehint">Name</string>
+    <string name="regemailhint">Email</string>
+    <string name="regpswdhint">Password</string>
+    <string name="regchkpswdhint">Re-Password</string>
+    <string name="regdobhint">DOB</string>
+    <string name="regmobilehint">Mobile No.</string>
+    <string name="regaddresshint">Address</string>
+    <string name="regadd1hint">Address Line 1</string>
+    <string name="regadd2hint">Address Line 2</string>
+    <string name="regstatehint">State</string>
+    <string name="regpincodehint">Pincode</string>
+    <string name="regdeposithint">Deposit Amount</string>
+    <string name="refralIdhint">Enter Referral Id</string>
+    <string name="adhaarIdhint">Adhaar No.(optional)</string>
+    <string name="regrefralhint">Referral Code</string>
+    <string name="submittext">Submit</string>
+    <string name="refraltext"><u>Click to fill referral id</u></string>
+    <string name="regtermstext">I accept terms and conditions</string>
+    <string name="disclamaier">Designs in the pictures may vary from real ones. We request not to opt for mehndi art if you are allergic to henna. We do not hold responsibility for any allergies or
+        skin infection in such cases. We also request you to inform us with the required details so we can arrange the best for you, any end moment changes can\'t be helped, and we will fail to return your booking amount.</string>
+
+    <string name="disclamaiertattoo">Conditions : Above Price is Showing SQURE PER INCH, Total Price Change According to Size.
+    There is No HOME SERVICE. You Have to Come Our Studio to Make Tattoo. Pay Only 1000 Rupees for Booking.
+    </string>
+    <string name="trvlcharge">Out side Mumbai Please Contact 9867387327 for Travelling Charges</string>
+
+
+    <string name="categoryText">Category</string>
+    <string name="viewmoreText">View More</string>
+    <string name="verifyText">Verify</string>
+    <string name="addphoto"><u>Add Photo</u></string>
+
+
+    <string name="bankdetailtext">
+        <b>Account Name : </b> Pramod Punit Gupta\n\n
+        <b>Account No : </b> 910010040495445\n\n
+        <b>Bank Name : </b> Axis Bank Ltd\n\n
+        <b>RTGS/NEFT IFSC : </b> UTIB0000654
+    </string>
+
+    <string name="orderText">Place Your Order</string>
+
+    <string-array name="deposit_item">
+        <item>Select Deposit Amount</item>
+        <item>10000</item>
+    </string-array>
+
+    <string-array name="nav_drawer_items">
+        <item>Home</item>
+        <item>My Profile</item>
+        <item>My Order</item>
+        <item>My Wishlist</item>
+        <item>Contact Us</item>
+        <item>Terms &amp; Condition</item>
+        <item>Privacy Policy</item>
+        <item>Share Us</item>
+        <item>Rate Us</item>
+        <item>Log Out</item>
+    </string-array>
+
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_employee</item>
+        <item>@drawable/ic_order</item>
+        <item>@drawable/ic_wishlist</item>
+        <item>@drawable/ic_support</item>
+        <item>@drawable/ic_terrms</item>
+        <item>@drawable/ic_privacy</item>
+        <item>@drawable/ic_share</item>
+        <item>@drawable/ic_rateus</item>
+        <item>@drawable/ic_logout</item>
+    </array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

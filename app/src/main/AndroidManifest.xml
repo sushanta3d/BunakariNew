@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bunakari.sambalpurifashion">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:largeHeap="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".adapter.YplayerActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.VideoDetailsActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.VideosActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".view.TattooBooking" />
+        <activity android:name=".view.LocationActivity" />
+        <activity android:name=".view.BookingActivity" />
+        <activity android:name=".view.SearchActivity" />
+        <activity android:name=".view.AllOrderActivity" />
+        <activity android:name=".view.MyTransactionActivity" />
+        <activity android:name=".view.MyBalanceActivity" />
+        <activity
+            android:name=".view.OtpActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".view.BusinessRegisterActivity" />
+        <activity android:name=".view.BusinessLoginActivity" />
+        <activity android:name=".view.MyNetworkActivity" />
+        <activity android:name=".view.ViewAllCategoryActivity" />
+        <activity
+            android:name=".view.StatusActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.paytm.pgsdk.PaytmPGActivity"
+            android:configChanges="keyboardHidden|orientation|keyboard"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.checksum"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".view.PaymentMethodActivity" />
+        <activity android:name=".view.AddAddressActivity" />
+        <activity android:name=".view.DelieveryAddressActivity" />
+        <activity android:name=".view.CartActivity" />
+        <activity
+            android:name=".view.FullscreenActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".view.ProductDetailsActivity" />
+        <activity android:name=".view.ProductActivity" />
+        <activity android:name=".view.HomeActivity" />
+        <activity
+            android:name=".view.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".view.SignUpActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+
+
+    </application>
+
+</manifest>

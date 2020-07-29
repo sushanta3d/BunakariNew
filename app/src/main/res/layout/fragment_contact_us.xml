@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ContactUsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/nameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="30dp">
+
+                <ImageView
+                    android:id="@+id/personImgView"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_person"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/personTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/darkblue"
+                    android:layout_toRightOf="@id/personImgView"
+                    android:layout_marginLeft="20dp"/>
+
+                <TextView
+                    android:id="@+id/line1TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.8dp"
+                    android:background="@drawable/bluegradientline"
+                    android:layout_below="@id/personTitleTextView"
+                    android:layout_toRightOf="@id/personImgView"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="2dp"/>
+
+                <TextView
+                    android:id="@+id/personValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/line1TextView"
+                    android:layout_toRightOf="@id/personImgView"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="2dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/addressLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="30dp"
+                android:layout_below="@id/nameLayout">
+
+                <ImageView
+                    android:id="@+id/addressImgView"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_location"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/addressTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/darkblue"
+                    android:layout_toRightOf="@id/addressImgView"
+                    android:layout_marginLeft="20dp"/>
+
+                <TextView
+                    android:id="@+id/line2TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.8dp"
+                    android:background="@drawable/bluegradientline"
+                    android:layout_below="@id/addressTitleTextView"
+                    android:layout_toRightOf="@id/addressImgView"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="2dp"/>
+
+                <TextView
+                    android:id="@+id/addressValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/line2TextView"
+                    android:layout_toRightOf="@id/addressImgView"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="2dp"/>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/mapImgView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/gmap"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/nameLayout"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="20dp"
+                />
+
+            <RelativeLayout
+                android:id="@+id/mobileLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="30dp"
+                android:layout_below="@id/addressLayout">
+
+                <ImageView
+                    android:id="@+id/mobileImgView"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_phone"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/mobileTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile No."
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/darkblue"
+                    android:layout_toRightOf="@id/mobileImgView"
+                    android:layout_marginLeft="20dp"/>
+
+                <TextView
+                    android:id="@+id/line4TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.8dp"
+                    android:background="@drawable/bluegradientline"
+                    android:layout_below="@id/mobileTitleTextView"
+                    android:layout_toRightOf="@id/mobileImgView"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="2dp"/>
+
+                <TextView
+                    android:id="@+id/mobileValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:autoLink="phone"
+                    android:textColorLink="@color/black"
+                    android:layout_below="@id/line4TextView"
+                    android:layout_toRightOf="@id/mobileImgView"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="2dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/emailLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="30dp"
+                android:layout_below="@id/mobileLayout">
+
+                <ImageView
+                    android:id="@+id/emailImgView"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_mail"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/emailTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email Id"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/darkblue"
+                    android:layout_toRightOf="@id/emailImgView"
+                    android:layout_marginLeft="20dp"/>
+
+                <TextView
+                    android:id="@+id/line5TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.8dp"
+                    android:background="@drawable/bluegradientline"
+                    android:layout_below="@id/emailTitleTextView"
+                    android:layout_toRightOf="@id/emailImgView"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="2dp"/>
+
+                <TextView
+                    android:id="@+id/emailValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:autoLink="email"
+                    android:textColorLink="@color/black"
+                    android:layout_below="@id/line5TextView"
+                    android:layout_toRightOf="@id/emailImgView"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="2dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/webLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="30dp"
+                android:layout_below="@id/emailLayout">
+
+                <ImageView
+                    android:id="@+id/webImgView"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_web"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/webTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Website"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/darkblue"
+                    android:layout_toRightOf="@id/webImgView"
+                    android:layout_marginLeft="20dp"/>
+
+                <TextView
+                    android:id="@+id/line6TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.8dp"
+                    android:background="@drawable/bluegradientline"
+                    android:layout_below="@id/webTitleTextView"
+                    android:layout_toRightOf="@id/webImgView"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="2dp"/>
+
+                <TextView
+                    android:id="@+id/webValueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:autoLink="web"
+                    android:textColorLink="@color/black"
+                    android:layout_below="@id/line6TextView"
+                    android:layout_toRightOf="@id/webImgView"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="2dp"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

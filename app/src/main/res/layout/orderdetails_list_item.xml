@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="2dp"
+        android:layout_margin="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:id="@+id/imgLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/proImgView"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:scaleType="centerCrop"
+                  />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/pNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                 android:layout_below="@id/imgLayout"
+                android:layout_marginTop="7dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
+
+            <TextView
+                android:id="@+id/priceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/red"
+                android:layout_toRightOf="@id/imgLayout"
+                android:layout_below="@id/pNameTextView"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"/>
+
+            <TextView
+                android:id="@+id/offerPriceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:layout_toRightOf="@id/imgLayout"
+                android:layout_below="@id/priceTextView"
+                android:layout_marginTop="3dp"
+                android:layout_marginStart="5dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/qtyTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Qty :"
+                android:textColor="@color/darkblue"
+                android:textSize="14sp"
+                android:layout_below="@id/priceTextView"
+                android:layout_toRightOf="@id/imgLayout"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"/>
+
+            <TextView
+                android:id="@+id/qtyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_below="@id/priceTextView"
+                android:layout_toRightOf="@id/qtyTitleTextView"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="3dp"/>
+
+            <TextView
+                android:id="@+id/sizeTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Size :"
+                android:textSize="14sp"
+                android:textColor="@color/darkbrown"
+                android:layout_below="@id/qtyTitleTextView"
+                android:layout_toRightOf="@id/imgLayout"
+                android:layout_marginTop="7dp"
+                android:layout_marginStart="5dp"/>
+
+            <TextView
+                android:id="@+id/sizeValueTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/darkbrown"
+                android:layout_below="@id/qtyTitleTextView"
+                android:layout_toRightOf="@id/sizeTitleTextView"
+                android:layout_marginTop="7dp"
+                android:layout_marginStart="3dp"/>
+
+            <TextView
+                android:id="@+id/colorTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Color :"
+                android:textSize="14sp"
+                android:textColor="@color/darkbrown"
+                android:layout_below="@id/sizeTitleTextView"
+                android:layout_toRightOf="@id/imgLayout"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/colorCardView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/sizeTitleTextView"
+                android:layout_toRightOf="@id/colorTitleTextView"
+                android:layout_marginTop="3dp"
+                android:layout_marginStart="3dp"
+                app:cardCornerRadius="20dp"
+                android:background="@color/white"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

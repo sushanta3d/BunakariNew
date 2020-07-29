@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/blackboxborder"
+    android:layout_margin="1dp">
+
+    <ImageView
+        android:id="@+id/logoImgView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/redeem"/>
+
+    <TextView
+        android:id="@+id/rIdTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Request Id :"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/logoImgView"
+        android:layout_alignTop="@id/logoImgView"/>
+
+    <TextView
+        android:id="@+id/rIdValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_toRightOf="@id/rIdTitleTextView"
+        android:layout_alignTop="@id/logoImgView"/>
+
+    <TextView
+        android:id="@+id/amtTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Redeem Amount :"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/logoImgView"
+        android:layout_below="@id/rIdTitleTextView"/>
+
+    <TextView
+        android:id="@+id/amtValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_toRightOf="@id/amtTitleTextView"
+        android:layout_below="@id/rIdValueTextView"/>
+
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"/>
+
+</RelativeLayout>
