@@ -22,8 +22,9 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
+import com.bunakari.sambalpurifashion.R;
 import com.google.android.material.snackbar.Snackbar;
-import com.marriagearts.mehndi.R;
+
 
 
 public class BasicFunction {

@@ -14,12 +14,13 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.marriagearts.mehndi.R;
-import com.marriagearts.mehndi.model.BasicFunction;
-import com.marriagearts.mehndi.model.GetPrefs;
-import com.marriagearts.mehndi.model.ProfileResponse;
-import com.marriagearts.mehndi.network.ApiService;
-import com.marriagearts.mehndi.network.RetroClass;
+
+import com.bunakari.sambalpurifashion.R;
+import com.bunakari.sambalpurifashion.model.BasicFunction;
+import com.bunakari.sambalpurifashion.model.GetPrefs;
+import com.bunakari.sambalpurifashion.model.ProfileResponse;
+import com.bunakari.sambalpurifashion.network.ApiService;
+import com.bunakari.sambalpurifashion.network.RetroClass;
 
 import retrofit2.Call;
 import retrofit2.Callback;

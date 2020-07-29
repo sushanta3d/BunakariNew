@@ -13,14 +13,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.bunakari.sambalpurifashion.R;
+import com.bunakari.sambalpurifashion.model.BalanceResponse;
+import com.bunakari.sambalpurifashion.model.BasicFunction;
+import com.bunakari.sambalpurifashion.model.GetPrefs;
+import com.bunakari.sambalpurifashion.model.SignupResponse;
+import com.bunakari.sambalpurifashion.network.ApiService;
+import com.bunakari.sambalpurifashion.network.RetroClass;
 import com.google.android.material.textfield.TextInputEditText;
-import com.marriagearts.mehndi.R;
-import com.marriagearts.mehndi.model.BalanceResponse;
-import com.marriagearts.mehndi.model.BasicFunction;
-import com.marriagearts.mehndi.model.GetPrefs;
-import com.marriagearts.mehndi.model.SignupResponse;
-import com.marriagearts.mehndi.network.ApiService;
-import com.marriagearts.mehndi.network.RetroClass;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;

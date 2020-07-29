@@ -11,13 +11,13 @@
         <ImageView
             android:id="@+id/topImgView"
             android:layout_width="300dp"
-            android:layout_height="175dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo_prarts" />
+            app:srcCompat="@drawable/bunakarilogo" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/mobInputLayout"

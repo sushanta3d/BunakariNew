@@ -17,13 +17,6 @@
         android:largeHeap="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".adapter.YplayerActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".view.VideosActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view.TattooBooking" />
         <activity android:name=".view.LocationActivity" />
         <activity android:name=".view.BookingActivity" />
@@ -86,6 +79,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+
+
 
 
 

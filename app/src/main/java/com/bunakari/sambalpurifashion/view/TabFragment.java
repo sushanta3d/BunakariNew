@@ -134,18 +134,18 @@ public class TabFragment extends Fragment implements VideoAdapter.ItemClickListe
     @Override
     public void onItemClick(View view, int position) {
         if (view.getTag().equals(1)) {
-            Intent intent = new Intent(getContext(), VideoDetailsActivity.class);
-            intent.putExtra("datalist", productResponseList);
-            intent.putExtra("position", position);
-            intent.putExtra("title", productResponseList.get(position).getTitle());
-            intent.putExtra("img", productResponseList.get(position).getImg());
-            intent.putExtra("id", productResponseList.get(position).getId());
-            intent.putExtra("subcat", productResponseList.get(position).getSubcategory());
-            intent.putExtra("VideoID", productResponseList.get(position).getVideoId());
-            intent.putExtra("viewcount", productResponseList.get(position).getViews());
+       //     Intent intent = new Intent(getContext(), VideoDetailsActivity.class);
+         //   intent.putExtra("datalist", productResponseList);
+       //     intent.putExtra("position", position);
+        //    intent.putExtra("title", productResponseList.get(position).getTitle());
+      //      intent.putExtra("img", productResponseList.get(position).getImg());
+       //     intent.putExtra("id", productResponseList.get(position).getId());
+      //      intent.putExtra("subcat", productResponseList.get(position).getSubcategory());
+       //     intent.putExtra("VideoID", productResponseList.get(position).getVideoId());
+       //     intent.putExtra("viewcount", productResponseList.get(position).getViews());
 
-            Bundle bundle = new Bundle();
-            startActivity(intent);
+      //      Bundle bundle = new Bundle();
+     //       startActivity(intent);
 
         }
     }

@@ -6,7 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.bunakari.sambalpurifashion.views.HomeActivity;
+import com.bunakari.sambalpurifashion.view.HomeActivity;
+
 
 public class MainActivity extends AppCompatActivity {
 

@@ -14,15 +14,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.marriagearts.mehndi.R;
-import com.marriagearts.mehndi.adapter.WishlistAdapter;
-import com.marriagearts.mehndi.model.BasicFunction;
-import com.marriagearts.mehndi.model.GetPrefs;
-import com.marriagearts.mehndi.model.ProductResponse;
-import com.marriagearts.mehndi.model.SignupResponse;
-import com.marriagearts.mehndi.model.WishlistList;
-import com.marriagearts.mehndi.network.ApiService;
-import com.marriagearts.mehndi.network.RetroClass;
+
+import com.bunakari.sambalpurifashion.R;
+import com.bunakari.sambalpurifashion.adapter.WishlistAdapter;
+import com.bunakari.sambalpurifashion.model.BasicFunction;
+import com.bunakari.sambalpurifashion.model.GetPrefs;
+import com.bunakari.sambalpurifashion.model.ProductResponse;
+import com.bunakari.sambalpurifashion.model.SignupResponse;
+import com.bunakari.sambalpurifashion.model.WishlistList;
+import com.bunakari.sambalpurifashion.network.ApiService;
+import com.bunakari.sambalpurifashion.network.RetroClass;
 
 import java.util.ArrayList;
 import java.util.List;

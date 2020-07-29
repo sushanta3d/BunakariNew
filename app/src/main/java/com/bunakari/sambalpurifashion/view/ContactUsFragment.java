@@ -16,11 +16,12 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.marriagearts.mehndi.R;
-import com.marriagearts.mehndi.model.BasicFunction;
-import com.marriagearts.mehndi.model.ContactUsResponse;
-import com.marriagearts.mehndi.network.ApiService;
-import com.marriagearts.mehndi.network.RetroClass;
+
+import com.bunakari.sambalpurifashion.R;
+import com.bunakari.sambalpurifashion.model.BasicFunction;
+import com.bunakari.sambalpurifashion.model.ContactUsResponse;
+import com.bunakari.sambalpurifashion.network.ApiService;
+import com.bunakari.sambalpurifashion.network.RetroClass;
 
 import java.util.Locale;
 

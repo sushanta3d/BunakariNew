@@ -1,6 +1,6 @@
 package com.bunakari.sambalpurifashion.model;
 
-import com.marriagearts.mehndi.network.RetroClass;
+ import com.bunakari.sambalpurifashion.network.RetroClass;
 
 import java.io.Serializable;
 

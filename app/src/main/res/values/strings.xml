@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pramod Arts</string>
+    <string name="app_name">Bunakari</string>
 
     //login page
     <string name="loginemailhint">Email</string>
@@ -48,10 +48,10 @@
 
 
     <string name="bankdetailtext">
-        <b>Account Name : </b> Pramod Punit Gupta\n\n
-        <b>Account No : </b> 910010040495445\n\n
-        <b>Bank Name : </b> Axis Bank Ltd\n\n
-        <b>RTGS/NEFT IFSC : </b> UTIB0000654
+        <b>Account Name : </b>  \n\n
+        <b>Account No : </b>  \n\n
+        <b>Bank Name : </b>  \n\n
+        <b>RTGS/NEFT IFSC : </b>
     </string>
 
     <string name="orderText">Place Your Order</string>
