@@ -6,9 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bunakari.sambalpurifashion.R;
+import com.bunakari.sambalpurifashion.adapter.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
-import com.marriagearts.mehndi.R;
-import com.marriagearts.mehndi.adapter.ViewPagerAdapter;
+
 
 public class VideosActivity extends AppCompatActivity {
     private Toolbar toolbar;

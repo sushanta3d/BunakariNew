@@ -15,14 +15,15 @@ import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.marriagearts.mehndi.R;
-import com.marriagearts.mehndi.adapter.ViewAllAdapter;
-import com.marriagearts.mehndi.model.CartList;
-import com.marriagearts.mehndi.model.CartResponse;
-import com.marriagearts.mehndi.model.GetPrefs;
-import com.marriagearts.mehndi.model.SubCategoryResponse;
-import com.marriagearts.mehndi.network.ApiService;
-import com.marriagearts.mehndi.network.RetroClass;
+
+import com.bunakari.sambalpurifashion.R;
+import com.bunakari.sambalpurifashion.adapter.ViewAllAdapter;
+import com.bunakari.sambalpurifashion.model.CartList;
+import com.bunakari.sambalpurifashion.model.CartResponse;
+import com.bunakari.sambalpurifashion.model.GetPrefs;
+import com.bunakari.sambalpurifashion.model.SubCategoryResponse;
+import com.bunakari.sambalpurifashion.network.ApiService;
+import com.bunakari.sambalpurifashion.network.RetroClass;
 
 import java.util.ArrayList;
 import java.util.List;

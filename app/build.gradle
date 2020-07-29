@@ -109,7 +109,8 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.0'
     implementation 'com.nineoldandroids:library:2.4.0'
     implementation 'com.daimajia.slider:library:1.1.5@aar'
-
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.23'
     implementation 'com.wdullaer:materialdatetimepicker:3.6.4'
     implementation 'com.github.MikeOrtiz:TouchImageView:2.3.2'
     implementation 'com.jakewharton:butterknife:10.2.1'

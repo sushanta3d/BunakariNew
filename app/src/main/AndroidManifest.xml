@@ -22,10 +22,6 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.VideoDetailsActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".view.VideosActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view.TattooBooking" />
