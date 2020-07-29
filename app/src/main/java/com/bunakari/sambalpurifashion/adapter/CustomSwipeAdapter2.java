@@ -12,10 +12,10 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
 import com.bunakari.sambalpurifashion.R;
-import com.bunakari.sambalpurifashion.model.TouchImageView;
-
+import com.ortiz.touchview.TouchImageView;
 
 import java.util.ArrayList;
+
 
 
 /**
@@ -43,13 +43,13 @@ public class CustomSwipeAdapter2 extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return (view == (ConstraintLayout) object);
+        return (view==(ConstraintLayout)object);
     }
 
     public Object instantiateItem(ViewGroup container, final int position) {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View swipe_view = layoutInflater.inflate(R.layout.zoom_pager, container, false);
-       // TouchImageView imageView = swipe_view.findViewById(R.id.touchimageview1);
+        // TouchImageView imageView = swipe_view.findViewById(R.id.touchimageview1);
         ImageView crossImageView = swipe_view.findViewById(R.id.btnClose);
         TouchImageView imageFullScreen = swipe_view.findViewById(R.id.imageFullScreen);
         Glide.with(context).load(images.get(position)).into(imageFullScreen);
@@ -67,6 +67,8 @@ public class CustomSwipeAdapter2 extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((ConstraintLayout) object);
+        container.removeView((ConstraintLayout)object);
     }
+
+
 }

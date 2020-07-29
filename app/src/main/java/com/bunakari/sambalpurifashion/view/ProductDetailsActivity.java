@@ -101,14 +101,14 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle("Product Details");
+     //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+  //      getSupportActionBar().setDisplayShowTitleEnabled(true);
+  //      getSupportActionBar().setTitle("Product Details");
         initUi();
-        getDesignImage();
+    //    getDesignImage();
         AddToTempNotification();
         setViewData();
-        GetRelProductData();
+     //   GetRelProductData();
 
     }
 
@@ -185,13 +185,13 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
     private void setViewData(){
 
         wishflag = productResponseList.get(pos).getInwishlist();
-        likeflag = productResponseList.get(pos).getInlikelist();
+      //  likeflag = productResponseList.get(pos).getInlikelist();
         if (wishflag == 1){
             wishImgView.setImageResource(R.drawable.ic_wishlistfill);
         }else {
             wishImgView.setImageResource(R.drawable.ic_wishlist);
         }
-        if (productResponseList.get(pos).getLikecount() != 0) {
+    /*      if (productResponseList.get(pos).getLikecount() != 0) {
             likecount.setText(productResponseList.get(pos).getLikecount()+ " Likes ");
         }
         else {
@@ -200,14 +200,14 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         }
 
 
-        if (likeflag == 0){
+       if (likeflag == 0){
             likeImageView.setImageResource(R.drawable.thumbupblack);
 
         }else {
              likeImageView.setImageResource(R.drawable.thumbupwhite);
         }
 
-/*        for (int i = 0; i < productResponseList.get(pos).getSize().size(); i++) {
+       for (int i = 0; i < productResponseList.get(pos).getSize().size(); i++) {
             sizePosList.add(i,0);
         }
 
@@ -220,7 +220,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         prdRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         prdRecyclerView.setNestedScrollingEnabled(false);
      cId = productResponseList.get(pos).getCategoryid();
-        productid.setText("MA00"+productResponseList.get(pos).getId());
+        productid.setText("BU00"+productResponseList.get(pos).getId());
 
         pNameTextView.setText(productResponseList.get(pos).getProname());
 
@@ -247,67 +247,13 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
             disclaimTitleTextView.setVisibility(View.GONE);
             disclaimerWebView.setVisibility(View.GONE);
         }
-        if(cId.equalsIgnoreCase("2"))
-        {
-            disclamaiertattoo.setVisibility(View.VISIBLE);
-            disclaimTitleTextView.setVisibility(View.GONE);
-            watermark.setVisibility(View.GONE);
-            qtyLayout.setVisibility(View.GONE);
-            inchesLayout.setVisibility(View.VISIBLE);
-            addCartTextView.setText("Book Appointment");
-            getTotalTattooPrice();
-            txtlength.addTextChangedListener(new TextWatcher() {
 
-                public void onTextChanged(CharSequence s, int start, int before,
-                                          int count) {
-                    if(!s.equals("") ) {
-                        //do your work here
-                        getTotalTattooPrice();
-                    }
-                }
-
-
-
-                public void beforeTextChanged(CharSequence s, int start, int count,
-                                              int after) {
-
-                }
-
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
-
-            txtwidth.addTextChangedListener(new TextWatcher() {
-
-                public void onTextChanged(CharSequence s, int start, int before,
-                                          int count) {
-                    if(!s.equals("") ) {
-                        //do your work here
-                        getTotalTattooPrice();
-                    }
-                }
-
-
-
-                public void beforeTextChanged(CharSequence s, int start, int count,
-                                              int after) {
-
-                }
-
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
-
-        }
-        else {
             disclamaiertattoo.setVisibility(View.GONE);
-            disclaimTitleTextView.setVisibility(View.VISIBLE);
+            disclaimTitleTextView.setVisibility(View.GONE);
             inchesLayout.setVisibility(View.GONE);
             addCartTextView.setText("Add to Cart");
-            getTotalAmount();
-        }
+         //   getTotalAmount();
+
 
 
 /*
@@ -331,6 +277,31 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
             imgList.add(productResponseList.get(pos).getImg4().replaceAll(" ","%20"));
         }
 */
+
+
+        if(productResponseList.get(pos).getImg().length() != 60){
+            imgList.add(productResponseList.get(pos).getImg().replaceAll(" ","%20"));
+        }
+
+        if(productResponseList.get(pos).getImg1().length() != 60){
+            imgList.add(productResponseList.get(pos).getImg1().replaceAll(" ","%20"));
+        }
+
+        if(productResponseList.get(pos).getImg2().length() != 60){
+            imgList.add(productResponseList.get(pos).getImg2().replaceAll(" ","%20"));
+        }
+
+        if(productResponseList.get(pos).getImg3().length() != 60){
+            imgList.add(productResponseList.get(pos).getImg3().replaceAll(" ","%20"));
+        }
+
+        if(productResponseList.get(pos).getImg4().length() != 60){
+            imgList.add(productResponseList.get(pos).getImg4().replaceAll(" ","%20"));
+        }
+
+
+
+
         viewPager.setAdapter(new CustomSwipeAdapter(getApplicationContext(),imgList){
             public Object instantiateItem(ViewGroup container, final int position) {
                 LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);

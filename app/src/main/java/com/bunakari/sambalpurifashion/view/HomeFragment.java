@@ -258,7 +258,7 @@ public class HomeFragment extends Fragment implements CategotyAdapter.ItemClickL
                                     intent.putExtra("cId",  productResponseList.get(position).getCategoryid());
                                     intent.putExtra("catName",  productResponseList.get(position).getCategory());
                                     startActivity(intent);
-                                    Bundle bundle = new Bundle();
+                            //        Bundle bundle = new Bundle();
                                   //  bundle.putString(FirebaseAnalytics.Param.ITEM_ID, productResponseList.get(position).getId());
                                  //   bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, productResponseList.get(position).getProname());
                                  //   bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");

@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white">
 
-                    <com.marriagearts.mehndi.model.HeightWrapperViewPager
+                    <com.bunakari.sambalpurifashion.model.HeightWrapperViewPager
                         android:id="@+id/viewPager"
                         android:layout_width="match_parent"
                         android:layout_height="500dp" />

@@ -10,11 +10,11 @@ import android.widget.RelativeLayout;
 
 import androidx.viewpager.widget.PagerAdapter;
 
-
 import com.bunakari.sambalpurifashion.R;
 import com.bunakari.sambalpurifashion.model.BasicFunction;
 
 import java.util.ArrayList;
+
 
 
 /**
@@ -22,6 +22,7 @@ import java.util.ArrayList;
  */
 
 public class CustomSwipeAdapter extends PagerAdapter {
+
 
     private Context context;
     private LayoutInflater layoutInflater;
@@ -31,6 +32,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
     public CustomSwipeAdapter(Context context, ArrayList<String> images) {
         this.context = context;
         this.images = images;
+
     }
 
     @Override
