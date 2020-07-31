@@ -2,6 +2,7 @@ package com.bunakari.sambalpurifashion.model;
 
 public class OrderDetailsResponse {
 
+    private String orderproductid;
     private String pid;
     private String qty;
     private String proname;
@@ -12,6 +13,17 @@ public class OrderDetailsResponse {
     private String colorname;
     private String colorid;
     private String colorcode;
+    private String ratting;
+    private String status;
+    private String ratingmsg;
+
+    public String getOrderproductid() {
+        return orderproductid;
+    }
+
+    public void setOrderproductid(String orderproductid) {
+        this.orderproductid = orderproductid;
+    }
 
     public String getPid() {
         return pid;
@@ -91,5 +103,29 @@ public class OrderDetailsResponse {
 
     public void setColorcode(String colorcode) {
         this.colorcode = colorcode;
+    }
+
+    public String getRatting() {
+        return ratting;
+    }
+
+    public void setRatting(String ratting) {
+        this.ratting = ratting;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getRatingmsg() {
+        return ratingmsg;
+    }
+
+    public void setRatingmsg(String ratingmsg) {
+        this.ratingmsg = ratingmsg;
     }
 }

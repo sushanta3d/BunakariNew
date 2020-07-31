@@ -10,11 +10,6 @@ public class OrderResponse {
     public String order_status;
     public String paymenttype;
     public String payment_status;
-    public String booking_time;
-
-     public String booking_date;
-    public String booking_amount;
-    public String balance_amount;
     public String date;
 
     public String getId() {
@@ -87,37 +82,5 @@ public class OrderResponse {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getBooking_time() {
-        return booking_time;
-    }
-
-    public void setBooking_time(String booking_time) {
-        this.booking_time = booking_time;
-    }
-
-    public String getBooking_date() {
-        return booking_date;
-    }
-
-    public void setBooking_date(String booking_date) {
-        this.booking_date = booking_date;
-    }
-
-    public String getBooking_amount() {
-        return booking_amount;
-    }
-
-    public void setBooking_amount(String booking_amount) {
-        this.booking_amount = booking_amount;
-    }
-
-    public String getBalance_amount() {
-        return balance_amount;
-    }
-
-    public void setBalance_amount(String balance_amount) {
-        this.balance_amount = balance_amount;
     }
 }

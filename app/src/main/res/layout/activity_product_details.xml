@@ -8,7 +8,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/btmcart">
+        android:layout_above="@id/addCartTextView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                     <com.bunakari.sambalpurifashion.model.HeightWrapperViewPager
                         android:id="@+id/viewPager"
                         android:layout_width="match_parent"
-                        android:layout_height="500dp" />
+                        android:layout_height="wrap_content" />
 
                     <ImageView
                         android:id="@+id/leftImgbtn"
@@ -47,21 +47,6 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="5dp"
                         android:src="@drawable/ic_left"/>
-
-                    <TextView
-                        android:id="@+id/watermark"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20dp"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"
-                        android:text=""
-                        android:textScaleX="2.2"
-                        android:gravity="center"
-                       android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-
-                          />
 
                     <ImageView
                         android:id="@+id/rightImgbtn"
@@ -160,9 +145,8 @@
                         android:textSize="15sp"
                         android:textColor="@color/darkbrown"
                         android:textStyle="bold"
-                        android:layout_marginBottom="8dp"
                         android:layout_marginStart="5dp"
-                        android:layout_marginTop="10dp"/>
+                        android:layout_marginTop="5dp"/>
 
                     <TextView
                         android:id="@+id/lineTextView"
@@ -181,24 +165,19 @@
                         android:textSize="14sp"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_below="@id/lineTextView"
-                      />
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@id/lineTextView"/>
 
                     <TextView
                         android:id="@+id/offerPriceTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
+                        android:textSize="12sp"
                         android:textColor="@color/red"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_below="@id/lineTextView"
-                        android:layout_toRightOf="@id/priceTextView"
-                     />
+                        android:layout_marginTop="3dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_below="@id/priceTextView"/>
 
                     <TextView
                         android:id="@+id/percentTextView"
@@ -206,18 +185,17 @@
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
                         android:textColor="@color/black"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginStart="2dp"
                         android:layout_toRightOf="@id/offerPriceTextView"
                         android:layout_below="@id/priceTextView"/>
-
 
                     <ImageView
                         android:id="@+id/shareImgView"
                         android:layout_width="21dp"
                         android:layout_height="21dp"
                         android:src="@drawable/ic_share"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:layout_alignParentRight="true"
                         android:layout_below="@id/lineTextView"/>
@@ -227,36 +205,11 @@
                         android:layout_width="21dp"
                         android:layout_height="21dp"
                         android:src="@drawable/ic_wishlist"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="2dp"
                         android:layout_toLeftOf="@id/shareImgView"
                         android:layout_below="@id/lineTextView"/>
-
-                    <ImageView
-                        android:id="@+id/like"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_below="@id/lineTextView"
-                        android:layout_toLeftOf="@id/likscount"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="2dp"
-                        android:src="@drawable/thumbupblack"/>
-
-                    <TextView
-                        android:id="@+id/likscount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/lineTextView"
-                        android:text="likes"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_toLeftOf="@id/wishImgView"
-                        android:textColor="@color/darkbrown"
-                        android:textSize="14sp"
-                        />
 
                 </RelativeLayout>
 
@@ -268,8 +221,9 @@
                 android:layout_height="wrap_content"
                 app:cardElevation="2dp"
                 app:cardCornerRadius="2dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"
-                android:visibility="gone"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/topCardView">
@@ -277,7 +231,6 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     android:background="@color/white">
 
                     <TextView
@@ -310,6 +263,7 @@
                 android:layout_height="wrap_content"
                 app:cardElevation="2dp"
                 app:cardCornerRadius="2dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -319,7 +273,6 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
                     android:background="@color/white">
 
                     <TextView
@@ -350,115 +303,26 @@
                 android:id="@+id/qtyCardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardElevation="2dp"
+                app:cardCornerRadius="2dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                app:cardCornerRadius="2dp"
-                app:cardElevation="2dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/colorCardView">
-
-                <LinearLayout
-                    android:id="@+id/inchesLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:layout_marginLeft="10dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/colorCardView">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Length :"
-                        android:textColor="@color/darkblue"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/txtlength"
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:inputType="number"
-                        android:text="3" />
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="17sp"
-                        android:text="X"
-                        android:textColor="@color/red"
-                        android:layout_marginLeft="5dp"
-                        android:textStyle="bold"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Width :"
-                        android:textColor="@color/darkblue"
-                        android:textSize="17sp"
-                        android:layout_marginLeft="7dp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/txtwidth"
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:inputType="number"
-                        android:text="2" />
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="17sp"
-                        android:text="="
-                        android:textColor="@color/red"
-                        android:layout_marginLeft="5dp"
-                        android:textStyle="bold"
-                        />
-
-                    <TextView
-                        android:id="@+id/txttSize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="17sp"
-                        android:textColor="@color/black"
-                        android:layout_marginLeft="10dp"
-                        android:textStyle="bold"
-                        />
-
-                    <Button
-                        android:id="@+id/btntotalvalue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:text="Calculate"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        android:visibility="gone"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
 
                 <LinearLayout
                     android:id="@+id/qtyLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:background="@color/white"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="3dp"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/colorCardView">
 
                     <TextView
@@ -467,7 +331,7 @@
                         android:text="Qty :"
                         android:textColor="@color/darkblue"
                         android:textSize="17sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <ImageView
                         android:id="@+id/minusImgView"
@@ -475,27 +339,27 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="3dp"
-                        android:src="@drawable/ic_minus" />
+                        android:src="@drawable/ic_minus"/>
 
                     <TextView
                         android:id="@+id/qtyTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/sizeroundborder"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
                         android:paddingLeft="10dp"
-                        android:paddingTop="3dp"
                         android:paddingRight="10dp"
+                        android:paddingTop="3dp"
                         android:paddingBottom="3dp"
                         android:text="1"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:background="@drawable/sizeroundborder"/>
 
                     <ImageView
                         android:id="@+id/plusImgView"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="3dp"
-                        android:src="@drawable/ic_plus" />
+                        android:src="@drawable/ic_plus"/>
 
                 </LinearLayout>
 
@@ -516,33 +380,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@color/white">
-                    <TextView
-                        android:id="@+id/productidtext"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Product Id :"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/darkbrown"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginStart="5dp"/>
-
-
-
-                    <TextView
-                        android:id="@+id/productid"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Product Id :"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:layout_toRightOf="@id/productidtext"
-                        android:textColor="@color/black"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginStart="5dp"/>
-
 
                     <TextView
                         android:id="@+id/descTitleTextView"
@@ -552,7 +391,6 @@
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:textColor="@color/darkbrown"
-                        android:layout_below="@id/productid"
                         android:layout_marginTop="5dp"
                         android:layout_marginStart="5dp"/>
 
@@ -569,7 +407,7 @@
                         android:id="@+id/disclaimTitleTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/disclamaier"
+                        android:text="Disclaimer :"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:textColor="@color/darkbrown"
@@ -577,68 +415,18 @@
                         android:layout_marginStart="5dp"
                         android:layout_below="@id/descWebView"/>
 
-
-
-                    <TextView
-                        android:id="@+id/disclaimTitleTattoo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/disclamaiertattoo"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/darkbrown"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_below="@id/descWebView"
-                        android:visibility="gone"/>
-
                     <WebView
                         android:id="@+id/disclaimWebView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/disclaimTitleTextView"
                         android:layout_marginTop="3dp"
-                        android:visibility="gone"
-
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="5dp"/>
 
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
-
-
-
-            <TextView
-                android:id="@+id/similard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:text="Similar Design"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:background="@color/black"
-                android:layout_weight="1"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/detailsCardView"
-                />
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/productRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/similard" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -651,41 +439,18 @@
         android:layout_centerInParent="true"
         android:visibility="gone"/>
 
-    <LinearLayout
-        android:id="@+id/btmcart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        >
-
-        <TextView
-            android:id="@+id/totalprice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:background="@color/black"
-            android:layout_weight="1"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:gravity="center"
-            />
     <TextView
         android:id="@+id/addCartTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Add To Cart"
         android:textSize="17sp"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:background="@color/red"
-      android:layout_weight="1"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
         android:gravity="center"
-      />
-
-
-    </LinearLayout>
+        android:padding="7dp"
+        android:layout_margin="8dp"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

@@ -18,7 +18,7 @@ public class StatusActivity extends AppCompatActivity {
 
     private TextView amountTextView,titleTextView,subTitleTextView;
     private Button homeButton;
-    private String amountString,from,TxStatus;
+    private String amountString,from;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -35,13 +35,13 @@ public class StatusActivity extends AppCompatActivity {
         titleTextView = findViewById(R.id.titleTextView);
         subTitleTextView = findViewById(R.id.subTitleTextView);
         homeButton = findViewById(R.id.actionButton);
-        TxStatus = getIntent().getStringExtra("TxStatus");
+
         from = getIntent().getStringExtra("from");
         amountString = getIntent().getStringExtra("amount");
         amountTextView.setText("\u20B9 "+amountString);
 
         sharedPreferences = getSharedPreferences(GetPrefs.PREFS_NAME,getApplicationContext().MODE_PRIVATE);
-        subTitleTextView.setText(TxStatus);
+
         if (from.equalsIgnoreCase("1")){
             homeButton.setVisibility(View.GONE);
             titleTextView.setText("Recharge Summary");

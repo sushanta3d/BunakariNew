@@ -220,7 +220,7 @@ public class HomeFragment extends Fragment implements CategotyAdapter.ItemClickL
 
     private void GetProductData() {
         ApiService productService = RetroClass.getApiService();
-        Call<ProductList> prodServiceList = productService.gethomeProducts("2",mobileString);
+        Call<ProductList> prodServiceList = productService.gethomeProducts("1",mobileString);
 
         prodServiceList.enqueue(new Callback<ProductList>() {
             @Override
@@ -243,7 +243,7 @@ public class HomeFragment extends Fragment implements CategotyAdapter.ItemClickL
 
                             for (int i = 0; i < productResponseList.size(); i++) {
                                 wishflag.set(i,productResponseList.get(i).getInwishlist());
-                                likeflag.set(i,productResponseList.get(i).getInlikelist());
+                              //  likeflag.set(i,productResponseList.get(i).getInlikelist());
                             }
 
 
@@ -255,8 +255,8 @@ public class HomeFragment extends Fragment implements CategotyAdapter.ItemClickL
                                     Intent intent = new Intent(getActivity() ,ProductDetailsActivity.class);
                                     intent.putExtra("datalist", productResponseList);
                                     intent.putExtra("position", position);
-                                    intent.putExtra("cId",  productResponseList.get(position).getCategoryid());
-                                    intent.putExtra("catName",  productResponseList.get(position).getCategory());
+                                    intent.putExtra("cId", "1");
+                                    intent.putExtra("catName", "Saree");
                                     startActivity(intent);
                             //        Bundle bundle = new Bundle();
                                   //  bundle.putString(FirebaseAnalytics.Param.ITEM_ID, productResponseList.get(position).getId());

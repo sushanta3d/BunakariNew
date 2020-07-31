@@ -16,6 +16,12 @@
     <style name="Menus_title" parent="@android:style/Theme.Translucent">
         <item name="android:windowNoTitle">true</item>
     </style>
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/lightgrey</item>
+        <item name="colorControlActivated">@color/darkbrown</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:maxHeight">50dp</item>
+    </style>
 
     <style name="AndroidImageSlider_Corner_Oval_Orange">
         <item name="android:layout_width">wrap_content</item>

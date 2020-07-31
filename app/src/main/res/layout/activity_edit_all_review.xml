@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.EditAllReviewActivity"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/lineTextView"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/grey"
+        android:layout_below="@id/titleTextView"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <TextView
+        android:id="@+id/extraTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/reasonSpinner"
+        android:layout_alignBottom="@id/reasonSpinner"
+        android:layout_alignLeft="@id/reasonSpinner"
+        android:layout_alignRight="@id/reasonSpinner"
+        android:padding="5dp"
+        android:background="@drawable/blackboxtransborder"/>
+
+    <Spinner
+        android:id="@+id/reasonSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lineTextView"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="5dp"
+        android:spinnerMode="dialog"/>
+
+    <RatingBar
+        android:id="@+id/rateBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reasonSpinner"
+        android:layout_centerHorizontal="true"
+        android:numStars="5"
+        android:stepSize="0.5"
+        android:theme="@style/RatingBar"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/descEditText"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:hint="Write a description..."
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:gravity="start"
+        android:padding="7dp"
+        android:layout_below="@id/rateBar"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/greyboxborder"
+        android:inputType="textMultiLine"/>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/submitroundborder"
+        android:backgroundTint="@color/darkbrown"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:layout_below="@id/descEditText"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

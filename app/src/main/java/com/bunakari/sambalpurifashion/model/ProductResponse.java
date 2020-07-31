@@ -1,11 +1,10 @@
 package com.bunakari.sambalpurifashion.model;
 
-
-
 import com.bunakari.sambalpurifashion.network.RetroClass;
 
 import java.io.Serializable;
 import java.util.List;
+
 
 
 public class ProductResponse implements Serializable {
@@ -19,57 +18,18 @@ public class ProductResponse implements Serializable {
     private String img2;
     private String img3;
     private String img4;
+    private String img5;
+    private String img6;
+    private String img7;
+    private String img8;
+    private String img9;
     private String description;
     private String desclaimer;
     private Integer inwishlist;
-    private Integer inlikelist;
-    private  Integer likecount;
-    private String category;
-    private String subcategory;
-    private String categoryid;
-    public String getCategoryid() {
-        return categoryid;
-    }
 
-
-
-    public void setCategoryid(String categoryid) {
-        this.categoryid = categoryid;
-    }
-
-
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getSubcategory() {
-        return subcategory;
-    }
-
-    public void setSubcategory(String subcategory) {
-        this.subcategory = subcategory;
-    }
-
-
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    private String url;
     private List<ColorResponse> color;
 
     private List<SizeResponse> size;
-    private List<ImageResponse> sc;
 
     public String getId() {
         return id;
@@ -104,7 +64,7 @@ public class ProductResponse implements Serializable {
     }
 
     public String getImg() {
-        return RetroClass.PRODUCT_PATH1 +  img;
+        return RetroClass.PRODUCT_PATH1 + img;
     }
 
     public void setImg(String img) {
@@ -141,6 +101,46 @@ public class ProductResponse implements Serializable {
 
     public void setImg4(String img4) {
         this.img4 = img4;
+    }
+
+    public String getImg5() {
+        return  RetroClass.PRODUCT_PATH6 + img5;
+    }
+
+    public void setImg5(String img5) {
+        this.img5 = img5;
+    }
+
+    public String getImg6() {
+        return  RetroClass.PRODUCT_PATH6 + img6;
+    }
+
+    public void setImg6(String img6) {
+        this.img6 = img6;
+    }
+
+    public String getImg7() {
+        return RetroClass.PRODUCT_PATH7 + img7;
+    }
+
+    public void setImg7(String img7) {
+        this.img7 = img7;
+    }
+
+    public String getImg8() {
+        return RetroClass.PRODUCT_PATH8 + img8;
+    }
+
+    public void setImg8(String img8) {
+        this.img8 = img8;
+    }
+
+    public String getImg9() {
+        return RetroClass.PRODUCT_PATH10 + "xyz"+img9;
+    }
+
+    public void setImg9(String img9) {
+        this.img9 = img9;
     }
 
     public String getDescription() {
@@ -181,30 +181,5 @@ public class ProductResponse implements Serializable {
 
     public void setSize(List<SizeResponse> size) {
         this.size = size;
-    }
-
- public  List<ImageResponse> getSc(){
-        return sc;
- }
-
- public void setSc(List<ImageResponse>sc){
-        this.sc=sc;
- }
-
-
-    public Integer getInlikelist() {
-        return inlikelist;
-    }
-
-    public void setInlikelist(Integer inlikelist) {
-        this.inlikelist = inlikelist;
-    }
-
-    public Integer getLikecount() {
-        return likecount;
-    }
-
-    public void setLikecount(Integer likecount) {
-        this.likecount = likecount;
     }
 }

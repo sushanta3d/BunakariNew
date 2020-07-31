@@ -13,10 +13,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.text.Editable;
 import android.text.Html;
 import android.text.Spanned;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,11 +23,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,24 +33,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.MenuItemCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-
+import com.bumptech.glide.Glide;
 import com.bunakari.sambalpurifashion.R;
+import com.bunakari.sambalpurifashion.adapter.ColorAdapter;
 import com.bunakari.sambalpurifashion.adapter.CustomSwipeAdapter;
+import com.bunakari.sambalpurifashion.adapter.SizeAdapter;
 import com.bunakari.sambalpurifashion.model.BasicFunction;
 import com.bunakari.sambalpurifashion.model.CartList;
 import com.bunakari.sambalpurifashion.model.CartResponse;
 import com.bunakari.sambalpurifashion.model.GetPrefs;
 import com.bunakari.sambalpurifashion.model.HeightWrapperViewPager;
-import com.bunakari.sambalpurifashion.model.ProductList;
 import com.bunakari.sambalpurifashion.model.ProductResponse;
 import com.bunakari.sambalpurifashion.model.SignupResponse;
 import com.bunakari.sambalpurifashion.network.ApiService;
 import com.bunakari.sambalpurifashion.network.RetroClass;
+
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -66,49 +63,48 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductDetailsActivity extends AppCompatActivity implements View.OnClickListener  {
+public class ProductDetailsActivity extends AppCompatActivity implements View.OnClickListener , SizeAdapter.ItemClickListener, ColorAdapter.ItemClickListener {
 
     private ArrayList<ProductResponse> productResponseList = new ArrayList<>();
-    private ArrayList<ProductResponse> relproductResponseList = new ArrayList<>();
     private ArrayList<String> imgList = new ArrayList<>();
-    private RecyclerView colorRecyclerView,sizeRecyclerView,prdRecyclerView;;
+    private RecyclerView colorRecyclerView,sizeRecyclerView;
+    private SizeAdapter sizeAdapter;
+    private ColorAdapter colorAdapter;
+    private SizeAdapter.ItemClickListener itemClickListener1;
+    private ColorAdapter.ItemClickListener itemClickListener2;
     private HeightWrapperViewPager viewPager;
     private ProgressBar progressBar;
     private ImageView prevImgview,nextImgview;
-    private LinearLayout qtyLayout,inchesLayout;
-    private ImageView shareImgView,wishImgView,plusImgView,minusImgView,likeImageView;
+    private ImageView shareImgView,wishImgView,plusImgView,minusImgView;
     private WebView descriptionWebView,disclaimerWebView;
-    private Button btntotalvalue;
-    private EditText txtlength,txtwidth;
-    private TextView txttSize,totalprice,watermark,pNameTextView,priceTextView,offerPriceTextView,percentTextView,qtyTextView,addCartTextView,textCartItemCount,descTitleTextView,disclaimTitleTextView,likecount,productid,disclamaiertattoo;
-    private int pos = 0, total, bookingamount=0,tSize=0;
-    private int wishflag = 0,likeflag=0;
+    private TextView pNameTextView,priceTextView,offerPriceTextView,percentTextView,qtyTextView,addCartTextView,textCartItemCount,descTitleTextView,disclaimTitleTextView;
+    private int pos = 0, total;
+    private int wishflag = 0;
     private ArrayList<Integer> sizePosList = new ArrayList<>();
     private ArrayList<Integer> colorPosList = new ArrayList<>();
-    private ArrayList<String> imagePosList = new ArrayList<>();
     private SharedPreferences sharedPreferences;
-    private String mobileString,uidString,sizeId = "",colorId = "",imageName,cId,catName;
+    private String mobileString,uidString,sizeId = "",colorId = "";
     private int cartcount = 0;
     private CardView sizeCardView,colorCardView;
- //   private FirebaseAnalytics mFirebaseAnalytics;
-    private ArrayList<Integer> wishflag1 = new ArrayList<>();
-    private ArrayList<Integer> likeflag1= new ArrayList<>();
+
+    private RatingBar rateBar;
+    boolean videoflag = false;
+
     int PERMISSION_ALL = 1;
     String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-    HomeProductAdapter homeProductAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
-     //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-  //      getSupportActionBar().setDisplayShowTitleEnabled(true);
-  //      getSupportActionBar().setTitle("Product Details");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle("Product Details");
+
         initUi();
-    //    getDesignImage();
-        AddToTempNotification();
+
         setViewData();
-     //   GetRelProductData();
 
     }
 
@@ -138,12 +134,12 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         wishImgView = findViewById(R.id.wishImgView);
         plusImgView = findViewById(R.id.plusImgView);
         minusImgView = findViewById(R.id.minusImgView);
-        disclamaiertattoo = findViewById(R.id.disclaimTitleTattoo);
+
         descriptionWebView = findViewById(R.id.descWebView);
         disclaimerWebView = findViewById(R.id.disclaimWebView);
         descTitleTextView = findViewById(R.id.descTitleTextView);
         disclaimTitleTextView = findViewById(R.id.disclaimTitleTextView);
-        qtyLayout = findViewById(R.id.qtyLayout);
+
         pNameTextView = findViewById(R.id.pNameTextView);
         priceTextView = findViewById(R.id.priceTextView);
         offerPriceTextView = findViewById(R.id.offerPriceTextView);
@@ -151,17 +147,7 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         qtyTextView = findViewById(R.id.qtyTextView);
         addCartTextView = findViewById(R.id.addCartTextView);
         progressBar = findViewById(R.id.progressBar);
-        likeImageView =  findViewById(R.id.like);
-        likecount = findViewById(R.id.likscount);
-        productid = findViewById(R.id.productid);
-        watermark= findViewById(R.id.watermark);
-        btntotalvalue = findViewById(R.id.btntotalvalue);
-        totalprice= findViewById(R.id.totalprice);
-        txtlength = findViewById(R.id.txtlength);
-        txtwidth= findViewById(R.id.txtwidth);
-        txttSize = findViewById(R.id.txttSize);
-        inchesLayout = findViewById(R.id.inchesLayout);
-        prdRecyclerView = findViewById(R.id.productRecyclerView);
+
         productResponseList = (ArrayList) getIntent().getSerializableExtra("datalist");
         pos = getIntent().getIntExtra("position",0);
 
@@ -169,8 +155,9 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         minusImgView.setOnClickListener(this);
         plusImgView.setOnClickListener(this);
         addCartTextView.setOnClickListener(this);
-        btntotalvalue.setOnClickListener(this);
 
+        itemClickListener1 = ProductDetailsActivity.this;
+        itemClickListener2 = ProductDetailsActivity.this;
       //  mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         sharedPreferences = getSharedPreferences(GetPrefs.PREFS_NAME,getApplicationContext().MODE_PRIVATE);
@@ -180,51 +167,30 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         final StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
 
+
     }
 
     private void setViewData(){
 
         wishflag = productResponseList.get(pos).getInwishlist();
-      //  likeflag = productResponseList.get(pos).getInlikelist();
         if (wishflag == 1){
             wishImgView.setImageResource(R.drawable.ic_wishlistfill);
         }else {
             wishImgView.setImageResource(R.drawable.ic_wishlist);
         }
-    /*      if (productResponseList.get(pos).getLikecount() != 0) {
-            likecount.setText(productResponseList.get(pos).getLikecount()+ " Likes ");
-        }
-        else {
 
-            likecount.setText("Like");
-        }
-
-
-       if (likeflag == 0){
-            likeImageView.setImageResource(R.drawable.thumbupblack);
-
-        }else {
-             likeImageView.setImageResource(R.drawable.thumbupwhite);
-        }
-
-       for (int i = 0; i < productResponseList.get(pos).getSize().size(); i++) {
+        for (int i = 0; i < productResponseList.get(pos).getSize().size(); i++) {
             sizePosList.add(i,0);
         }
 
         for (int i = 0; i < productResponseList.get(pos).getColor().size(); i++) {
             colorPosList.add(i,0);
         }
-*/
-
-
-        prdRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
-        prdRecyclerView.setNestedScrollingEnabled(false);
-     cId = productResponseList.get(pos).getCategoryid();
-        productid.setText("BU00"+productResponseList.get(pos).getId());
 
         pNameTextView.setText(productResponseList.get(pos).getProname());
 
-        if (productResponseList.get(pos).getOffer_price().length() != 0) {
+
+        if (!productResponseList.get(pos).getOffer_price().equalsIgnoreCase("0")) {
             offerPriceTextView.setText("\u20B9 "+productResponseList.get(pos).getPrice());
             offerPriceTextView.setPaintFlags(offerPriceTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             priceTextView.setText("\u20B9 "+productResponseList.get(pos).getOffer_price());
@@ -248,37 +214,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
             disclaimerWebView.setVisibility(View.GONE);
         }
 
-            disclamaiertattoo.setVisibility(View.GONE);
-            disclaimTitleTextView.setVisibility(View.GONE);
-            inchesLayout.setVisibility(View.GONE);
-            addCartTextView.setText("Add to Cart");
-         //   getTotalAmount();
-
-
-
-/*
-        if(productResponseList.get(pos).getImg().length() != 59){
-            imgList.add(productResponseList.get(pos).getImg().replaceAll(" ","%20"));
-        }
-
-        if(productResponseList.get(pos).getImg1().length() != 59){
-            imgList.add(productResponseList.get(pos).getImg1().replaceAll(" ","%20"));
-        }
-
-        if(productResponseList.get(pos).getImg2().length() != 59){
-            imgList.add(productResponseList.get(pos).getImg2().replaceAll(" ","%20"));
-        }
-
-        if(productResponseList.get(pos).getImg3().length() != 59){
-            imgList.add(productResponseList.get(pos).getImg3().replaceAll(" ","%20"));
-        }
-
-        if(productResponseList.get(pos).getImg4().length() != 59){
-            imgList.add(productResponseList.get(pos).getImg4().replaceAll(" ","%20"));
-        }
-*/
-
-
         if(productResponseList.get(pos).getImg().length() != 60){
             imgList.add(productResponseList.get(pos).getImg().replaceAll(" ","%20"));
         }
@@ -299,8 +234,26 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
             imgList.add(productResponseList.get(pos).getImg4().replaceAll(" ","%20"));
         }
 
+        if(productResponseList.get(pos).getImg5().length() != 60){
+            imgList.add(productResponseList.get(pos).getImg5().replaceAll(" ","%20"));
+        }
 
+        if(productResponseList.get(pos).getImg6().length() != 60){
+            imgList.add(productResponseList.get(pos).getImg6().replaceAll(" ","%20"));
+        }
 
+        if(productResponseList.get(pos).getImg7().length() != 60){
+            imgList.add(productResponseList.get(pos).getImg7().replaceAll(" ","%20"));
+        }
+
+        if(productResponseList.get(pos).getImg8().length() != 60){
+            imgList.add(productResponseList.get(pos).getImg8().replaceAll(" ","%20"));
+        }
+
+        if(productResponseList.get(pos).getImg9().length() != 64){
+            videoflag = true;
+            imgList.add(productResponseList.get(pos).getImg9().replaceAll(" ","%20"));
+        }
 
         viewPager.setAdapter(new CustomSwipeAdapter(getApplicationContext(),imgList){
             public Object instantiateItem(ViewGroup container, final int position) {
@@ -309,81 +262,55 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
                 ImageView imageView = (ImageView)swipe_view.findViewById(R.id.image_view);
                 final ProgressBar progressBar = (ProgressBar)swipe_view.findViewById(R.id.progressBar);
 
-                BasicFunction.showImage(imgList.get(position),getApplicationContext(),imageView,progressBar);
-               String imgurl = imgList.get(position);
+
+
+                    BasicFunction.showImage(imgList.get(position),getApplicationContext(),imageView,progressBar);
+
+
+
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent localIntent = new Intent(getApplicationContext(),
-                                FullscreenActivity.class);
-                        localIntent.putExtra("pos", position);
-                        localIntent.putExtra("image", imgList);
-                        localIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(localIntent);
-                    }
+
+                            Intent localIntent = new Intent(getApplicationContext(),
+                                    FullscreenActivity.class);
+                            localIntent.putExtra("pos", position);
+                            localIntent.putExtra("image", imgList);
+                            localIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(localIntent);
+                        }
+
                 });
                 imageView.setTag(position);
 
-                shareImgView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        ImageView proImgView = (ImageView)viewPager.findViewWithTag(viewPager.getCurrentItem());
-                        proImgView.setDrawingCacheEnabled(true);
+                shareImgView.setOnClickListener(view -> {
+                    ImageView proImgView = (ImageView)viewPager.findViewWithTag(viewPager.getCurrentItem());
+                    proImgView.setDrawingCacheEnabled(true);
 
-                        Uri bmpUri = getLocalBitmapUri(proImgView);
-                        if (bmpUri != null) {
-                            Spanned spanned = Html.fromHtml(Html.fromHtml(productResponseList.get(pos).getDescription()).toString());
-                            String boldHeader = "*Product Enquiry*";
-
-                            // Construct a ShareIntent with link to image
-                            Intent shareIntent = new Intent();
-                            shareIntent.setAction(Intent.ACTION_SEND);
-                            shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
-                            shareIntent.putExtra(Intent.EXTRA_TEXT, boldHeader + " : MA00 " +productResponseList.get(pos).getId() +"\n\n"+"*Product Name:* " + productResponseList.get(pos).getProname() + "\n\n" + "*Description:* \n\n" + spanned + "\n\n" + "* Click Below Link to View:* \n\n" + "https://play.google.com/store/apps/details?id=com.marriagearts.mehndi" + productResponseList.get(pos).getUrl() );
-                          //  shareIntent.setType("image*//*");
-                             shareIntent.setType("text/plain");
-
-                            // Launch sharing dialog for image
-                            startActivity(Intent.createChooser(shareIntent, "Share Product " + productResponseList.get(pos).getProname()));
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Not able to share this product...", Toast.LENGTH_LONG).show();
-                        }
+                    Uri bmpUri = getLocalBitmapUri(proImgView);
+                    if (bmpUri != null) {
+                        Spanned spanned = Html.fromHtml(Html.fromHtml(productResponseList.get(pos).getDescription()).toString());
+                        String boldHeader = "*Product Enquiry*";
+                        String appRefCode = sharedPreferences.getString(GetPrefs.PREFS_APP_RFERRAL_CODE,"");
+                        String shareBody = "Join me on Free India Market, Enter my code " + appRefCode + " to earn ₹100 back.\nhttps://play.google.com/store/apps/details?id="
+                                + getApplicationContext().getPackageName();
+                        // Construct a ShareIntent with link to image
+                        Intent shareIntent = new Intent();
+                        shareIntent.setAction(Intent.ACTION_SEND);
+                        shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
+                        shareIntent.putExtra(Intent.EXTRA_TEXT, boldHeader+"\n\n"+"*Product Name:* " + productResponseList.get(pos).getProname() + "\n\n" + "*Description:* \n\n" + spanned+"\n\n"+"https://freeindiamarket.com/Item_detail/"+ productResponseList.get(pos).getId() +"/"+productResponseList.get(pos).getProname().replaceAll(" ","+")+"\n\n"+shareBody);
+                        shareIntent.setType("image*//*");
+                        // Launch sharing dialog for image
+                        startActivity(Intent.createChooser(shareIntent, "Share Product " + productResponseList.get(pos).getProname()));
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Not able to share this product...", Toast.LENGTH_LONG).show();
                     }
                 });
+
                 container.addView(swipe_view);
                 return swipe_view;
             }
         });
-
-
-
-        likeImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (likeflag == 0) {
-                    if (BasicFunction.isNetworkAvailable(getApplicationContext())) {
-                        AddLikelist();
-                        likeImageView.setImageResource(R.drawable.thumbupwhite);
-                    } else {
-                        BasicFunction.showSnackbar(ProductDetailsActivity.this, "No internet connection,Please try again..!!");
-                    }
-                }else {
-                    if (BasicFunction.isNetworkAvailable(getApplicationContext())) {
-                        RemoveLikelist();
-                        likeImageView.setImageResource(R.drawable.thumbupblack);
-                    } else {
-                        BasicFunction.showSnackbar(ProductDetailsActivity.this, "No internet connection,Please try again..!!");
-                    }
-                }
-
-                //Toast.makeText(getApplicationContext(), "Not able to share this product...", Toast.LENGTH_LONG).show();
-            }
-        });
-
-
-
-
 
         prevImgview.setVisibility(View.GONE);
 
@@ -452,79 +379,24 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
         });
 
+        if (productResponseList.get(pos).getSize().size() > 0) {
+            sizeAdapter = new SizeAdapter(itemClickListener1, getApplicationContext(), productResponseList.get(pos).getSize(), sizePosList);
+            sizeRecyclerView.setAdapter(sizeAdapter);
+        }else {
+            sizeCardView.setVisibility(View.GONE);
+        }
+
+        if (productResponseList.get(pos).getColor().size() > 0) {
+            colorAdapter = new ColorAdapter(itemClickListener2, getApplicationContext(), productResponseList.get(pos).getColor(), colorPosList);
+            colorRecyclerView.setAdapter(colorAdapter);
+        }else {
+            colorCardView.setVisibility(View.GONE);
+        }
 
     }
-
-
-
-    private void AddToTempNotification(){
-     //   progressBar.setVisibility(View.VISIBLE);
-        ApiService addService = RetroClass.getApiService();
-        Call<SignupResponse> addResponseCall = addService.addtoTempNoti(productResponseList.get(pos).getId(),mobileString);
-        addResponseCall.enqueue(new Callback<SignupResponse>() {
-            @Override
-            public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {
-             //   progressBar.setVisibility(View.GONE);
-                SignupResponse signupResponse = response.body();
-                if (signupResponse != null) {
-                    if (signupResponse.success == 1){
-                        //wishflag = 1;
-                    //    BasicFunction.showToast(getApplicationContext(),"Item added ");
-                    }else {
-                      ///  wishImgView.setImageResource(R.drawable.ic_wishlist);
-                   //     BasicFunction.showToast(getApplicationContext(),"Item can't added");
-                    }
-                }else {
-                  //  wishImgView.setImageResource(R.drawable.ic_wishlist);
-                 //   BasicFunction.showToast(getApplicationContext(),"Item can't added");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<SignupResponse> call, Throwable t) {
-              //  progressBar.setVisibility(View.GONE);
-              //  wishImgView.setImageResource(R.drawable.ic_wishlist);
-           //     BasicFunction.showToast(getApplicationContext(),"Item can't added to wishlist1");
-            }
-        });
-    }
-
-    private void AddLikelist(){
-     //   progressBar.setVisibility(View.VISIBLE);
-        ApiService addService = RetroClass.getApiService();
-        Call<SignupResponse> addResponseCall = addService.addLikelist(productResponseList.get(pos).getId(),mobileString);
-        addResponseCall.enqueue(new Callback<SignupResponse>() {
-            @Override
-            public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {
-       //         progressBar.setVisibility(View.GONE);
-                SignupResponse signupResponse = response.body();
-                if (signupResponse != null) {
-                    if (signupResponse.success == 1){
-                        likeflag = 1;
-                        BasicFunction.showToast(getApplicationContext(),"Liked");
-                    }else {
-                        likeImageView.setImageResource(R.drawable.thumbupblack);
-                        BasicFunction.showToast(getApplicationContext(),"Item can't added ");
-                    }
-                }else {
-                    likeImageView.setImageResource(R.drawable.thumbupblack);
-                    BasicFunction.showToast(getApplicationContext(),"Item can't added ");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<SignupResponse> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                likeImageView.setImageResource(R.drawable.thumbupblack);
-                BasicFunction.showToast(getApplicationContext(),"Item can't added ");
-            }
-        });
-    }
-
-
 
     private void AddWishlist(){
-    //    progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
         ApiService addService = RetroClass.getApiService();
         Call<SignupResponse> addResponseCall = addService.addWishlist(productResponseList.get(pos).getId(),mobileString);
         addResponseCall.enqueue(new Callback<SignupResponse>() {
@@ -555,41 +427,8 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         });
     }
 
-    private void RemoveLikelist(){
-     //   progressBar.setVisibility(View.VISIBLE);
-        ApiService addService = RetroClass.getApiService();
-        Call<SignupResponse> addResponseCall = addService.removeLikelist(productResponseList.get(pos).getId(),mobileString);
-        addResponseCall.enqueue(new Callback<SignupResponse>() {
-            @Override
-            public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {
-                progressBar.setVisibility(View.GONE);
-                SignupResponse signupResponse = response.body();
-                if (signupResponse != null) {
-                    if (signupResponse.success == 1){
-                        likeflag = 0;
-                        BasicFunction.showToast(getApplicationContext(),"Item remove from likelist");
-                    }else {
-                        likeImageView.setImageResource(R.drawable.thumbupwhite);
-                        BasicFunction.showToast(getApplicationContext(),"Item can't remove from likelist");
-                    }
-                }else {
-                    likeImageView.setImageResource(R.drawable.thumbupwhite);
-                    BasicFunction.showToast(getApplicationContext(),"Item can't remove from likelist");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<SignupResponse> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                likeImageView.setImageResource(R.drawable.thumbupwhite);
-                BasicFunction.showToast(getApplicationContext(),"Item can't remove from likelist");
-            }
-        });
-    }
-
-
     private void RemoveWishlist(){
-      //  progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
         ApiService addService = RetroClass.getApiService();
         Call<SignupResponse> addResponseCall = addService.removeWishlist(productResponseList.get(pos).getId(),mobileString);
         addResponseCall.enqueue(new Callback<SignupResponse>() {
@@ -620,15 +459,12 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         });
     }
 
-
-
-
     private void AddToCart(){
-   //     progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
         getTotalAmount();
         ApiService addCartService = RetroClass.getApiService();
         Call<SignupResponse> cartResponseCall = addCartService.addToCart(uidString,
-                productResponseList.get(pos).getId(),bookingamount+"",qtyTextView.getText().toString(),total+"");
+                productResponseList.get(pos).getId(),colorId,sizeId,qtyTextView.getText().toString(),total+"");
         cartResponseCall.enqueue(new Callback<SignupResponse>() {
             @Override
             public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {
@@ -656,40 +492,12 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
 
     private void getTotalAmount(){
         total = 0;
-        int bamt=0;
-
         if (productResponseList.get(pos).getOffer_price().length() != 0) {
             total = total + (Integer.parseInt(productResponseList.get(pos).getOffer_price()) * Integer.parseInt(qtyTextView.getText().toString()));
-            bookingamount = total*20/100;
-            totalprice.setText("\u20B9 "+ String.valueOf(bookingamount));
         }else {
             total = total + (Integer.parseInt(productResponseList.get(pos).getPrice()) * Integer.parseInt(qtyTextView.getText().toString()));
-            bookingamount = total*20/100;
-
-            totalprice.setText("\u20B9 "+String.valueOf(bookingamount));
         }
-
-
     }
-
-
-
-    private void getTotalTattooPrice(){
-
-    String a = txtlength.getText().toString();
-    String b = txtwidth.getText().toString();
-        if (txtwidth.length()!=0 && txtlength.length()!=0){
-
-            tSize =Integer.parseInt(a) * Integer.parseInt(b);
-            String t = String.valueOf((tSize));
-            txttSize.setText( t + " Inches");
-            bookingamount = tSize * Integer.parseInt(productResponseList.get(pos).getOffer_price());
-          totalprice.setText("\u20B9 "+String.valueOf(bookingamount));
-        }
-
-
-    }
-
 
     public Uri getLocalBitmapUri(ImageView imageView) {
         // Extract Bitmap from ImageView drawable
@@ -752,26 +560,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
         }
     }
 
-
-    private void getDesignImage(){
-        Log.d("DesignLength",productResponseList.get(pos).getSc().size()+" ");
-        if (productResponseList.get(pos).getSc().size() > 0) {
-
-                for (int i = 0; i < productResponseList.get(pos).getSc().size(); i++) {
-
-                    imageName = productResponseList.get(pos).getSc().get(i).getImg();
-                        Log.d("ImageName", imageName);
-                    imgList.add(productResponseList.get(pos).getSc().get(i).getImg().replaceAll(" ","%20"));
-                }
-
-
-            }
-        }
-
-
-
-
-
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.wishImgView){
@@ -804,33 +592,67 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
             qty++;
             minusImgView.setClickable(true);
             qtyTextView.setText("" + qty);
-        }
-
-        else if (view.getId() == R.id.addCartTextView){
-
-            if(cId.equalsIgnoreCase("2")) {
-                Intent intent = new Intent(getApplicationContext(), BookingActivity.class);
-                intent.putExtra("amount", String.valueOf(bookingamount));
-                intent.putExtra("img", productResponseList.get(pos).getImg());
-                intent.putExtra("pName", productResponseList.get(pos).getProname());
-                intent.putExtra("tSize", tSize);
-                intent.putExtra("uId", uidString);
-                intent.putExtra("cId", cId);
-                intent.putExtra("pId", productResponseList.get(pos).getId());
-                intent.putExtra("bookingamt","1000");
-
-                startActivity(intent);
-            }
-            else{
+        }else if (view.getId() == R.id.addCartTextView){
+            if (productResponseList.get(pos).getSize().size() != 0 && productResponseList.get(pos).getColor().size() != 0){
+                getSizeColor();
+                if (sizeId.length() != 0 && colorId.length() != 0) {
+                    AddToCart();
+                }
+            }else if (productResponseList.get(pos).getSize().size() != 0){
+                if (sizePosList.contains(1)) {
+                    for (int i = 0; i < sizePosList.size(); i++) {
+                        if (sizePosList.get(i) == 1) {
+                            sizeId = productResponseList.get(pos).getSize().get(i).getSize();
+                        }
+                    }
+                    AddToCart();
+                }else {
+                    BasicFunction.showToast(getApplicationContext(),"Please select a size");
+                }
+            }else if (productResponseList.get(pos).getColor().size() != 0){
+                if (colorPosList.contains(1)) {
+                    for (int i = 0; i < colorPosList.size(); i++) {
+                        if (colorPosList.get(i) == 1) {
+                            colorId = productResponseList.get(pos).getColor().get(i).getId();
+                        }
+                    }
+                    AddToCart();
+                }else {
+                    BasicFunction.showToast(getApplicationContext(),"Please select a color");
+                }
+            }else {
                 AddToCart();
             }
-          }
-
-        else if(view.getId()==R.id.btntotalvalue){
-            getTotalTattooPrice();
         }
     }
 
+    @Override
+    public void onSizeItemClick(View view, int position) {
+        if (sizePosList.get(position) == 1){
+            sizePosList.set(position, 0);
+            sizeAdapter.updateSize(sizePosList);
+        }else {
+            for (int i = 0; i < sizePosList.size(); i++) {
+                sizePosList.set(i,0);
+            }
+            sizePosList.set(position, 1);
+            sizeAdapter.updateSize(sizePosList);
+        }
+    }
+
+    @Override
+    public void onColorItemClick(View view, int position) {
+        if (colorPosList.get(position) == 1){
+            colorPosList.set(position, 0);
+            colorAdapter.updateColor(colorPosList);
+        }else {
+            for (int i = 0; i < colorPosList.size(); i++) {
+                colorPosList.set(i,0);
+            }
+            colorPosList.set(position, 1);
+            colorAdapter.updateColor(colorPosList);
+        }
+    }
 
     private void GetCartTotal(){
         ApiService cartService = RetroClass.getApiService();
@@ -922,7 +744,6 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
                 // startActivity(homeIntent);
                 finish();
                 return true;
-
             case R.id.cart:
                 Intent intent = new Intent(getApplicationContext(),CartActivity.class);
                 startActivity(intent);
@@ -934,85 +755,5 @@ public class ProductDetailsActivity extends AppCompatActivity implements View.On
             default:
                 return (super.onOptionsItemSelected(item));
         }
-    }
-
-
-
-    private void GetRelProductData() {
-        ApiService productService = RetroClass.getApiService();
-        Call<ProductList> prodServiceList = productService.getRelProducts(cId,mobileString);
-
-        prodServiceList.enqueue(new Callback<ProductList>() {
-            @Override
-            public void onResponse(Call<ProductList> call, Response<ProductList> response) {
-                progressBar.setVisibility(View.GONE);
-                relproductResponseList = new ArrayList<>();
-                try {
-                    List<ProductResponse> pageResponses = null;
-                    if (response.body() != null) {
-                        pageResponses = response.body().getProductResponseList();
-                        relproductResponseList.addAll(pageResponses);
-
-                        if (relproductResponseList.size() > 0) {
-                            wishflag1 = new ArrayList<>();
-                            likeflag1= new ArrayList<>();
-                            for (int i = 0; i < relproductResponseList.size(); i++) {
-                                wishflag1.add(0);
-                                likeflag1.add(0);
-                            }
-
-                            for (int i = 0; i < relproductResponseList.size(); i++) {
-                                wishflag1.set(i,relproductResponseList.get(i).getInwishlist());
-                                likeflag1.set(i,relproductResponseList.get(i).getInlikelist());
-                            }
-
-
-                            // Create the recyclerViewAdapter
-                            homeProductAdapter = new HomeProductAdapter(getApplicationContext(), relproductResponseList, wishflag1, likeflag1, new HomeProductAdapter.getAdapterItemLcick() {
-                                @Override
-                                public void getItemClick(int position, ProductResponse response) {
-                                    // Toast.makeText( getActivity(), productResponseList.get(position).getId(), Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(getApplicationContext() ,ProductDetailsActivity.class);
-                                    intent.putExtra("datalist", relproductResponseList);
-                                    intent.putExtra("position", position);
-                                    intent.putExtra("cId",  relproductResponseList.get(position).getCategoryid());
-                                    intent.putExtra("catName",  relproductResponseList.get(position).getCategory());
-                                    startActivity(intent);
-                                    Bundle bundle = new Bundle();
-
-
-                                }
-
-                                @Override
-                                public void getLikeClick(int position, ProductResponse response, ImageView imageView) {
-                                    homeProductAdapter.AddLikelist(getApplicationContext(),response.getId(),mobileString,imageView);
-                                }
-                            });
-                            prdRecyclerView.setAdapter(homeProductAdapter);
-
-                            //      prdRecyclerView.setLayoutManager(gridLayoutManager);
-                        } else {
-                            //notTextView.setVisibility(View.VISIBLE);
-                        //    notTextView.setText("Something Went Wrong");
-                        }
-                    }else {
-                   //     notTextView.setVisibility(View.VISIBLE);
-                   //     notTextView.setText("Sorry, No Data Found");
-                    }
-                }catch (NullPointerException e){
-                    e.printStackTrace();
-                 //   notTextView.setVisibility(View.VISIBLE);
-                 //   notTextView.setText("Sorry, No Data Found");
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<ProductList> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-             //   notTextView.setVisibility(View.VISIBLE);
-             //   notTextView.setText("Sorry, No Data Found");
-            }
-        });
     }
 }

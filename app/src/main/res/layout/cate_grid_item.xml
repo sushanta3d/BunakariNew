@@ -9,7 +9,7 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_margin="3dp"
         android:background="@color/white"
         app:cardCornerRadius="3dp"
         app:cardElevation="2dp"
@@ -25,8 +25,8 @@
             <ImageView
                 android:id="@+id/cateImgView"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-               android:scaleType="centerCrop"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
                 android:src="@color/white" />
 
             <ProgressBar
@@ -44,12 +44,10 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="13dp"
-                android:layout_marginBottom="13dp"
+                android:layout_marginTop="3dp"
                 android:padding="3dp"
-                android:textColor="@color/red"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
                 android:gravity="center"
                 android:layout_below="@id/cateImgView"/>
 

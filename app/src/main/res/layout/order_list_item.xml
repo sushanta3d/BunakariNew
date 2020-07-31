@@ -17,17 +17,6 @@
             android:background="@color/white">
 
             <TextView
-                android:id="@+id/statusTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="# "
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginTop="7dp"
-                android:layout_marginLeft="15dp"/>
-
-            <TextView
                 android:id="@+id/odateTitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,26 +25,24 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
-                android:layout_below="@id/statusTextView"
                 />
 
             <TextView
                 android:id="@+id/odateValueTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/statusTextView"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="50dp"
+                android:textSize="14sp"
                 android:text="a"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                />
 
             <TextView
                 android:id="@+id/orderIdTitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order Id"
+                android:text="Order #"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:layout_below="@id/odateTitleTextView"
@@ -79,7 +66,7 @@
                 android:id="@+id/ototalTitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order Amount"
+                android:text="Order Total"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:layout_below="@id/orderIdTitleTextView"
@@ -99,109 +86,11 @@
                 android:layout_alignStart="@id/odateValueTextView"/>
 
             <TextView
-                android:id="@+id/bamount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Booking Amount"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:layout_below="@id/ototalValueTextView"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
-                />
-
-            <TextView
-                android:id="@+id/bamountv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="a"
-                android:textColor="@color/black"
-                android:layout_below="@id/ototalValueTextView"
-                android:layout_marginTop="5dp"
-                android:layout_alignStart="@id/ototalValueTextView"/>
-
-
-
-
-            <TextView
-                android:id="@+id/balamount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Balance Amount"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:layout_below="@id/bamount"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
-                />
-
-            <TextView
-                android:id="@+id/balamt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="a"
-                android:textColor="@color/black"
-                android:layout_below="@id/bamountv"
-                android:layout_marginTop="5dp"
-                android:layout_alignStart="@id/bamountv"/>
-
-            <TextView
-                android:id="@+id/bookingdt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Appointment"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:layout_below="@id/balamount"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
-                />
-
-            <TextView
-                android:id="@+id/bookingdtval"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="a"
-                android:textColor="@color/black"
-                android:layout_below="@id/balamt"
-                android:layout_marginTop="5dp"
-                android:layout_alignStart="@id/balamt"/>
-
-
-            <TextView
-                android:id="@+id/bookingtim"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" "
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:layout_below="@id/bookingdt"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
-                />
-
-            <TextView
-                android:id="@+id/bookingtimval"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="a"
-                android:textColor="@color/black"
-                android:layout_below="@id/bookingdtval"
-                android:layout_marginTop="5dp"
-                android:layout_alignStart="@id/bookingdtval"/>
-
-
-
-            <TextView
                 android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="@color/black"
-                android:layout_below="@id/bookingtimval"
+                android:layout_below="@id/ototalTitleTextView"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="7dp"
@@ -224,9 +113,14 @@
                     android:text="ORDER DETAILS"
                     android:textSize="14sp"
                     android:layout_centerVertical="true"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_marginBottom="5dp"
+                    android:paddingLeft="7dp"
+                    android:paddingRight="7dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:background="@drawable/orderborder"/>
 
 
             </RelativeLayout>

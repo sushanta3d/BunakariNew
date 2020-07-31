@@ -38,7 +38,7 @@
     <string name="disclamaiertattoo">Conditions : Above Price is Showing SQURE PER INCH, Total Price Change According to Size.
     There is No HOME SERVICE. You Have to Come Our Studio to Make Tattoo. Pay Only 1000 Rupees for Booking.
     </string>
-    <string name="trvlcharge">Out side Mumbai Please Contact 9867387327 for Travelling Charges</string>
+    <string name="trvlcharge">Out side Mumbai Please Contact 7738302194 for Travelling Charges</string>
 
 
     <string name="categoryText">Category</string>
@@ -53,6 +53,10 @@
         <b>Bank Name : </b>  \n\n
         <b>RTGS/NEFT IFSC : </b>
     </string>
+    <string name="returnp"><u>Return Item</u></string>
+    <string name="refund"><u>Refund</u></string>
+    <string name="cancel"><u>Cancel Item</u></string>
+    <string name="writereview"><u>Write Review</u></string>
 
     <string name="orderText">Place Your Order</string>
 
@@ -86,7 +90,31 @@
         <item>@drawable/ic_rateus</item>
         <item>@drawable/ic_logout</item>
     </array>
+    <string-array name="returnArray">
+        <item>Reason for return (Required*)</item>
+        <item>Order Created by Mistake</item>
+        <item>Item(s) Would Not Arrive on Time</item>
+        <item>Shipping Cost Too High</item>
+        <item>Item Price Too High</item>
+        <item>Found Cheaper Somewhere Else</item>
+        <item>Need to Change Shipping address</item>
+        <item>Need to Change Billing Address</item>
+        <item>Need to Change Payment Method</item>
+        <item>Other</item>
+    </string-array>
 
+    <string-array name="cancelArray">
+        <item>Reason for cancellation (Required*)</item>
+        <item>Order Created by Mistake</item>
+        <item>Item(s) Would Not Arrive on Time</item>
+        <item>Shipping Cost Too High</item>
+        <item>Item Price Too High</item>
+        <item>Found Cheaper Somewhere Else</item>
+        <item>Need to Change Shipping address</item>
+        <item>Need to Change Billing Address</item>
+        <item>Need to Change Payment Method</item>
+        <item>Other</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

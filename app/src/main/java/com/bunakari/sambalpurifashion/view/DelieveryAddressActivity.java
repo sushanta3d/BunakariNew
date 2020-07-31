@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.bunakari.sambalpurifashion.R;
 import com.bunakari.sambalpurifashion.adapter.AddressAdapter;
 import com.bunakari.sambalpurifashion.model.AddressList;
@@ -30,6 +29,7 @@ import com.bunakari.sambalpurifashion.network.RetroClass;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,7 +42,7 @@ public class DelieveryAddressActivity extends AppCompatActivity implements Addre
     private TextView notfoundTextView,addAddressTextView;
     private ProgressBar progressBar;
     private SharedPreferences sharedPreferences;
-    private String uidString, date, time,bookingamt,walletamount;
+    private String uidString;
     private ArrayList<AddressResponse> addressResponseList;
     private LinearLayoutManager layoutManager;
     public static DelieveryAddressActivity delieveryAddressActivity;
@@ -54,7 +54,7 @@ public class DelieveryAddressActivity extends AppCompatActivity implements Addre
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle("Select Booking Address");
+        getSupportActionBar().setTitle("Select Delivery Address");
 
         initUi();
 
@@ -80,12 +80,6 @@ public class DelieveryAddressActivity extends AppCompatActivity implements Addre
         delieveryAddressActivity = DelieveryAddressActivity.this;
 
         addAddressTextView.setOnClickListener(this);
-
-        Intent intent = getIntent();
-          date = intent.getStringExtra("date");
-          time = intent.getStringExtra("time");
-        bookingamt = intent.getStringExtra("bookingamt");
-        walletamount = intent.getStringExtra("walletamount");
     }
 
     private void GetAddressData(){
@@ -164,10 +158,6 @@ public class DelieveryAddressActivity extends AppCompatActivity implements Addre
         }else if (view.getTag().equals(2)){
             Intent intent = new Intent(getApplicationContext(),PaymentMethodActivity.class);
             intent.putExtra("addressId",addressResponseList.get(position).getId());
-            intent.putExtra("date", date);
-            intent.putExtra("time", time);
-            intent.putExtra("bookingamt", bookingamt);
-            intent.putExtra("walletamount", walletamount);
             startActivity(intent);
         }else if (view.getTag().equals(3)){
             Intent intent = new Intent(getApplicationContext(),AddAddressActivity.class);
@@ -176,7 +166,7 @@ public class DelieveryAddressActivity extends AppCompatActivity implements Addre
             intent.putExtra("position",position);
             startActivity(intent);
         }else if (view.getTag().equals(4)){
-            AlertDialog.Builder builder = new AlertDialog.Builder(DelieveryAddressActivity.this);
+            android.app.AlertDialog.Builder builder = new AlertDialog.Builder(DelieveryAddressActivity.this);
             builder.setTitle(R.string.app_name);
             builder.setIcon(R.mipmap.ic_launcher);
             builder.setMessage("Are you sure you want to delete this address ?");

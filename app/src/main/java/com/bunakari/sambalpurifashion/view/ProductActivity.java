@@ -167,7 +167,7 @@ public class ProductActivity extends AppCompatActivity implements ProductAdapter
 
                             for (int i = 0; i < productResponseList.size(); i++) {
                                 wishflag.set(i,productResponseList.get(i).getInwishlist());
-                                likeflag.set(i,productResponseList.get(i).getInlikelist());
+                            //    likeflag.set(i,productResponseList.get(i).getInlikelist());
                             }
 
 
@@ -307,7 +307,7 @@ public class ProductActivity extends AppCompatActivity implements ProductAdapter
                 SignupResponse signupResponse = response.body();
                 if (signupResponse != null) {
                     if (signupResponse.success == 1){
-                        productResponseList.get(pos).setInlikelist(1);
+                 //       productResponseList.get(pos).setInlikelist(1);
                         BasicFunction.showToast(getApplicationContext(),"Liked");
                     }else {
                         wishflag.set(pos,0);

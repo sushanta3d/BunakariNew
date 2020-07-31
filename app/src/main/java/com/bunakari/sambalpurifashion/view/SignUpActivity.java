@@ -98,26 +98,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         signUpActivity = SignUpActivity.this;
 
 
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            buildAlertMessageNoGps();
 
-        } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            getLocation();
-            geocoder = new Geocoder(this, Locale.getDefault());
-            try {
-                addresses = geocoder.getFromLocation(latti,longi,1);
-
-                 city = addresses.get(0).getLocality();
-                 state = addresses.get(0).getAdminArea();
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-        }
     }
 
     public boolean isValidData(){
@@ -232,8 +213,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             editor.putString(GetPrefs.PREFS_EMAIL,emailEditText.getText().toString());
                             editor.putString(GetPrefs.PREFS_MOBILE,mobEditText.getText().toString());
                             editor.putString(GetPrefs.PREFS_DOB," ");
-                           editor.putString(GetPrefs.PREFS_ADDRESS,city);
-                           editor.putString(GetPrefs.PREFS_STATE,state);
+                           editor.putString(GetPrefs.PREFS_ADDRESS,"");
+                           editor.putString(GetPrefs.PREFS_STATE,"");
                            editor.putString(GetPrefs.PREFS_PINCODE," ");
                            editor.putString(GetPrefs.PREFS_UID,signupModel.userid);
                             editor.putString(GetPrefs.PREFS_APP_RFERRAL_CODE,signupModel.appreferralcode);

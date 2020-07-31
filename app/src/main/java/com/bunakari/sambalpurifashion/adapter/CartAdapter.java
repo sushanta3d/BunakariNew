@@ -1,7 +1,9 @@
 package com.bunakari.sambalpurifashion.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +15,12 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.bunakari.sambalpurifashion.R;
 import com.bunakari.sambalpurifashion.model.BasicFunction;
 import com.bunakari.sambalpurifashion.model.CartResponse;
 
 import java.util.List;
+
 
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProductViewHolder> {
@@ -43,7 +45,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProductViewHol
     @Override
     public void onBindViewHolder(@NonNull final ProductViewHolder holder, int position) {
 
-     //   Log.d("SizeColor",cartList.get(position).getSize()+"\n"+cartList.get(position).getColorcode());
+        Log.d("SizeColor",cartList.get(position).getSize()+"\n"+cartList.get(position).getColorcode());
 
         holder.proTextView.setText(cartList.get(position).getProname());
         if (cartList.get(position).getOffer_price().length() != 0) {
@@ -54,11 +56,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProductViewHol
             holder.priceTextView.setText("\u20B9 "+cartList.get(position).getPrice());
             holder.offerPriceTextView.setVisibility(View.GONE);
         }
-
         holder.qtyTextView.setText(cartList.get(position).getQty());
 
+        if (cartList.get(position).getSize().length() != 0) {
+            holder.sizeTextView.setText(cartList.get(position).getSize());
+        }else {
+            holder.sizeTitleTextView.setVisibility(View.GONE);
+            holder.sizeTextView.setVisibility(View.GONE);
+        }
 
-
+        if (cartList.get(position).getColorcode().length() != 0) {
+            holder.colorCardView.setCardBackgroundColor(Color.parseColor(cartList.get(position).getColorcode()));
+        }else {
+            holder.colorTitleTextView.setVisibility(View.GONE);
+            holder.colorCardView.setVisibility(View.GONE);
+        }
 
         BasicFunction.showImage(cartList.get(position).getImg(),context,holder.proImageView,holder.progressBar);
 

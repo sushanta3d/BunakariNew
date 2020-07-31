@@ -1,6 +1,7 @@
 package com.bunakari.sambalpurifashion.view;
 
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,10 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.bunakari.sambalpurifashion.R;
 import com.bunakari.sambalpurifashion.adapter.AllOrderAdapter;
 import com.bunakari.sambalpurifashion.model.BasicFunction;
+import com.bunakari.sambalpurifashion.model.GetPrefs;
 import com.bunakari.sambalpurifashion.model.OrderDetailsList;
 import com.bunakari.sambalpurifashion.model.OrderDetailsResponse;
 import com.bunakari.sambalpurifashion.network.ApiService;
@@ -21,6 +22,7 @@ import com.bunakari.sambalpurifashion.network.RetroClass;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,9 +34,11 @@ public class AllOrderActivity extends AppCompatActivity implements AllOrderAdapt
     private TextView notfoundTextView;
     private Dialog dialog;
     private List<OrderDetailsResponse> orderResponseList;
-    private String oidString;
+    private String oidString,ostatusString,uid;
     private AllOrderAdapter orderAdapter;
     private AllOrderAdapter.ItemClickListener itemClickListener;
+    SharedPreferences sharedPreferences;
+    public static AllOrderActivity orderActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +47,11 @@ public class AllOrderActivity extends AppCompatActivity implements AllOrderAdapt
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle("Order Details");
+        getSupportActionBar().setTitle("All Order");
 
         initUi();
 
-        if (BasicFunction.isNetworkAvailable(getApplicationContext())) {
-            GetAllOrderData();
-            dialog.show();
-        }else {
-            BasicFunction.showSnackbar(AllOrderActivity.this,"No internet connection,Please try again..!!");
-        }
+
     }
 
     private void initUi() {
@@ -66,6 +65,12 @@ public class AllOrderActivity extends AppCompatActivity implements AllOrderAdapt
         itemClickListener = AllOrderActivity.this;
 
         oidString = getIntent().getStringExtra("oid");
+        ostatusString = getIntent().getStringExtra("ostatus");
+
+        sharedPreferences = getSharedPreferences(GetPrefs.PREFS_NAME,getApplicationContext().MODE_PRIVATE);
+        uid = sharedPreferences.getString(GetPrefs.PREFS_UID,"");
+
+        orderActivity = AllOrderActivity.this;
     }
 
     private void GetAllOrderData(){
@@ -76,11 +81,13 @@ public class AllOrderActivity extends AppCompatActivity implements AllOrderAdapt
             public void onResponse(Call<OrderDetailsList> call, Response<OrderDetailsList> response) {
                 dialog.dismiss();
                 orderResponseList = new ArrayList<>();
+                assert response.body() != null;
                 List<OrderDetailsResponse> orderResponses = response.body().getOrderDetailsResponseList();
                 if (orderResponses != null){
+
                     orderResponseList.addAll(orderResponses);
                     if (orderResponseList.size() > 0){
-                        orderAdapter = new AllOrderAdapter(itemClickListener,getApplicationContext(),orderResponseList);
+                        orderAdapter = new AllOrderAdapter(itemClickListener,getApplicationContext(),orderResponseList,ostatusString,oidString);
                         recyclerView.setAdapter(orderAdapter);
                     }else {
                         notfoundTextView.setVisibility(View.VISIBLE);
@@ -101,9 +108,21 @@ public class AllOrderActivity extends AppCompatActivity implements AllOrderAdapt
         });
     }
 
-    @Override
-    public void onItemClick(View view, int position) {
 
+    @Override
+    public void onItemClick(View view, int position, Float rate) {
+      //  UpdateRating(orderResponseList.get(position).getPid(),String.valueOf(rate));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (BasicFunction.isNetworkAvailable(getApplicationContext())) {
+            GetAllOrderData();
+            dialog.show();
+        }else {
+            BasicFunction.showSnackbar(AllOrderActivity.this,"No internet connection,Please try again..!!");
+        }
     }
 
     @Override

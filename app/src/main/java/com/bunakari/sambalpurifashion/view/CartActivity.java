@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +24,6 @@ import com.bunakari.sambalpurifashion.model.BasicFunction;
 import com.bunakari.sambalpurifashion.model.CartList;
 import com.bunakari.sambalpurifashion.model.CartResponse;
 import com.bunakari.sambalpurifashion.model.GetPrefs;
-import com.bunakari.sambalpurifashion.model.ProfileResponse;
 import com.bunakari.sambalpurifashion.model.SignupResponse;
 import com.bunakari.sambalpurifashion.network.ApiService;
 import com.bunakari.sambalpurifashion.network.RetroClass;
@@ -33,23 +31,21 @@ import com.bunakari.sambalpurifashion.network.RetroClass;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CartActivity extends AppCompatActivity implements CartAdapter.ItemClickListener, View.OnClickListener {
-
     private RecyclerView cartRecyclerView;
-    private CardView cardview;
-
     private CartAdapter cartAdapter;
     private CartAdapter.ItemClickListener itemClickListener;
-    private TextView totalTextView,checkoutTextView,notfoundTextView,totalvalue,boookingam,balanceamt,walletamt,txttraveling;
+    private TextView totalTextView,checkoutTextView,notfoundTextView;
     private ProgressBar progressBar;
     private List<CartResponse> cartResponseList;
     private SharedPreferences sharedPreferences;
-    private String uidString,walletAmtString= "",wamt="";
-    private int tempTotal = 0,bookingamount=0,bamt=0;
+    private String uidString;
+    private int tempTotal = 0;
     public static CartActivity cartActivity;
     private LinearLayoutManager layoutManager;
 
@@ -71,24 +67,21 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.ItemC
 
         cartRecyclerView = findViewById(R.id.cartRecyclerView);
         totalTextView = findViewById(R.id.totalTextView);
-        totalvalue = findViewById(R.id.totalvalue);
-        boookingam = findViewById(R.id.bookingvalue);
         checkoutTextView = findViewById(R.id.checkoutTextView);
         notfoundTextView = findViewById(R.id.notfoundTextView);
-        txttraveling = findViewById(R.id.txttraveling);
         progressBar = findViewById(R.id.progressBar);
-        cardview = findViewById(R.id.cartsummery);
+
         cartRecyclerView.setNestedScrollingEnabled(false);
         layoutManager = new LinearLayoutManager(getApplicationContext());
         cartRecyclerView.setLayoutManager(layoutManager);
-        balanceamt = findViewById(R.id.balanceamount);
+
         sharedPreferences = getSharedPreferences(GetPrefs.PREFS_NAME,getApplicationContext().MODE_PRIVATE);
         uidString = sharedPreferences.getString(GetPrefs.PREFS_UID,"");
-        walletamt = findViewById(R.id.walletamount);
+
         itemClickListener = CartActivity.this;
         checkoutTextView.setOnClickListener(this);
-      //  mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        GetWalletAmount();
+
+
         cartActivity = CartActivity.this;
     }
 
@@ -119,14 +112,12 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.ItemC
                             notfoundTextView.setText("Sorry, No Data Found");
                             totalTextView.setVisibility(View.GONE);
                             checkoutTextView.setVisibility(View.GONE);
-                            cardview.setVisibility(View.GONE);
                         }
                     }else {
                         notfoundTextView.setVisibility(View.VISIBLE);
                         notfoundTextView.setText("Sorry, No Data Found");
                         totalTextView.setVisibility(View.GONE);
                         checkoutTextView.setVisibility(View.GONE);
-                        cardview.setVisibility(View.GONE);
                     }
                 }catch (NullPointerException e){
                     e.printStackTrace();
@@ -134,7 +125,6 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.ItemC
                     notfoundTextView.setText("Sorry, No Data Found");
                     totalTextView.setVisibility(View.GONE);
                     checkoutTextView.setVisibility(View.GONE);
-                    cardview.setVisibility(View.GONE);
                 }
             }
 
@@ -145,36 +135,22 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.ItemC
                 notfoundTextView.setText("Sorry, No Data Found");
                 totalTextView.setVisibility(View.GONE);
                 checkoutTextView.setVisibility(View.GONE);
-                cardview.setVisibility(View.GONE);
             }
         });
     }
 
     private void getTotal(){
         tempTotal = 0;
-        int balaamt =0;
         for (int i = 0; i < cartResponseList.size(); i++) {
             if (cartResponseList.get(i).getOffer_price().length() != 0){
                 tempTotal = tempTotal + (Integer.parseInt(cartResponseList.get(i).getOffer_price()) * (Integer.parseInt(cartResponseList.get(i).getQty())));
-                bookingamount = tempTotal*20/100;
             }else {
                 tempTotal = tempTotal + (Integer.parseInt(cartResponseList.get(i).getPrice()) * (Integer.parseInt(cartResponseList.get(i).getQty())));
-                bookingamount = tempTotal*20/100;
             }
         }
-
-
-        balaamt = tempTotal-bookingamount-(Integer.parseInt(walletAmtString))+200;
-        totalTextView.setText("Booking Amount : " + "\u20B9 "+bookingamount);
+        totalTextView.setText("Total Amount : "+tempTotal);
         totalTextView.setVisibility(View.VISIBLE);
         checkoutTextView.setVisibility(View.VISIBLE);
-        cardview.setVisibility(View.VISIBLE);
-        totalvalue.setText("\u20B9 "+ tempTotal);
-        boookingam.setText(" - " + "\u20B9 "+ bookingamount);
-        totalTextView.setVisibility(View.VISIBLE);
-        balanceamt.setText( "Balance amount " +"\u20B9 "+ balaamt +" to be paid at the time of visit ");
-        walletamt.setText(" - " +"\u20B9 " + walletAmtString);
-        txttraveling.setText( "\u20B9 " + 200);
     }
 
     private void deleteProduct(int position){
@@ -211,22 +187,12 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.ItemC
         int total = 0;
         if (cartResponseList.get(position).getOffer_price().length() != 0){
             total = total + (Integer.parseInt(cartResponseList.get(position).getOffer_price()) * (qty));
-            bamt = total*20/100;
         }else {
             total = total + (Integer.parseInt(cartResponseList.get(position).getPrice()) * (qty));
-            bamt = total*20/100;
         }
-        if (bamt<1000){
-
-            bookingamount = 500;
-        }
-        else{
-
-            bookingamount =bamt;
-        }
-
         ApiService addCartService = RetroClass.getApiService();
-        Call<SignupResponse> cartResponseCall = addCartService.addToCart(uidString,cartResponseList.get(position).getPid(),bookingamount+"",qty+ "", total + "");
+        Call<SignupResponse> cartResponseCall = addCartService.addToCart(uidString,
+                cartResponseList.get(position).getPid(),cartResponseList.get(position).getColorid(),cartResponseList.get(position).getSize(),qty+"",total+"");
         cartResponseCall.enqueue(new Callback<SignupResponse>() {
             @Override
             public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {
@@ -275,43 +241,6 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.ItemC
             }
         });
     }
-
-
-    private void GetWalletAmount() {
-
-        ApiService apiService = RetroClass.getApiService();
-        Call<ProfileResponse> profileResponseCall = apiService.getWalletAmount(uidString);
-        profileResponseCall.enqueue(new Callback<ProfileResponse>() {
-            @Override
-            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
-                progressBar.setVisibility(View.GONE);
-                ProfileResponse profileResponse = response.body();
-                if (profileResponse != null) {
-                    wamt = profileResponse.money;
-
-                    if( Integer.parseInt(wamt)>=500){
-
-                        walletAmtString = "500";
-                    }
-                    else {
-                        walletAmtString = wamt;
-                    }
-
-
-                }else {
-                    BasicFunction.showDailogBox(CartActivity.this,"Oops Something went wrong, Please try again..!!");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ProfileResponse> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                BasicFunction.showDailogBox(CartActivity.this,"Oops Something went wrong, Please try again..!!");
-            }
-        });
-    }
-
-
 
     @Override
     protected void onResume() {
@@ -390,26 +319,12 @@ public class CartActivity extends AppCompatActivity implements CartAdapter.ItemC
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.checkoutTextView){
-
-            if( tempTotal>=3000){
-            Intent intent = new Intent(getApplicationContext(),BookingActivity.class);
-         //String bm =totalTextView.getText().toString();
-
-           String ba= String.valueOf(bookingamount);
-           intent.putExtra("bookingamt",ba);
-            intent.putExtra("walletamount", walletAmtString);
-            intent.putExtra("cId", "1");
+            Intent intent = new Intent(getApplicationContext(),DelieveryAddressActivity.class);
             startActivity(intent);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(GetPrefs.PREFS_AMOUNT,tempTotal+"");
             editor.putString(GetPrefs.PREFS_ITEM,cartResponseList.size()+"");
-
             editor.commit();
-            }
-            else {
-
-                BasicFunction.showDailogBox(CartActivity.this, "Total amount should be more then 3000");
-            }
         }
     }
 

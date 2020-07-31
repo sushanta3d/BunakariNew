@@ -22,6 +22,10 @@ public class RetroClass {
     public static final String PRODUCT_PATH3 = BuildConfig.BASE_URL + "admin/images/product/thumb3/";
     public static final String PRODUCT_PATH4 = BuildConfig.BASE_URL + "admin/images/product/thumb4/";
     public static final String PRODUCT_PATH5 = BuildConfig.BASE_URL + "admin/images/product/thumb5/";
+    public static final String PRODUCT_PATH6 = BuildConfig.BASE_URL + "admin/images/product/thumb6/";
+    public static final String PRODUCT_PATH7 = BuildConfig.BASE_URL + "admin/images/product/thumb7/";
+    public static final String PRODUCT_PATH8 = BuildConfig.BASE_URL + "admin/images/product/thumb8/";
+    public static final String PRODUCT_PATH10 = BuildConfig.BASE_URL + "admin/images/product/thumb10/";
     public static final String USER_IMG_PATH = BuildConfig.BASE_URL + "admin/images/package/";
 
     private static Retrofit getRetofitInstance(){

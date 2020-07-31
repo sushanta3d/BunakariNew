@@ -35,7 +35,6 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class MyOrderFragment extends Fragment implements OrderAdapter.ItemClickListener {
-
     private RecyclerView recyclerView;
     private TextView notfoundTextView;
     private Dialog dialog;
@@ -93,7 +92,7 @@ public class MyOrderFragment extends Fragment implements OrderAdapter.ItemClickL
                 if (orderResponses != null){
                     orderResponseList.addAll(orderResponses);
                     if (orderResponseList.size() > 0){
-                        orderAdapter = new OrderAdapter(itemClickListener,getActivity(),orderResponseList);
+                        orderAdapter = new OrderAdapter(getActivity(),itemClickListener,getActivity(),orderResponseList);
                         recyclerView.setAdapter(orderAdapter);
                     }else {
                         notfoundTextView.setVisibility(View.VISIBLE);
@@ -119,6 +118,7 @@ public class MyOrderFragment extends Fragment implements OrderAdapter.ItemClickL
         if (view.getTag().equals(1)){
             Intent intent = new Intent(getActivity(),AllOrderActivity.class);
             intent.putExtra("oid",orderResponseList.get(position).getOrderid());
+            intent.putExtra("ostatus",orderResponseList.get(position).getOrder_status());
             startActivity(intent);
         }
     }

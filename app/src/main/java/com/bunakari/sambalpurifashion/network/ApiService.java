@@ -113,12 +113,11 @@ public interface ApiService {
     Call<SignupResponse> addToCart(
             @Field("uid") String uid,
             @Field("pid") String pid,
-            //     @Field("colorid") String colorid,
-            @Field("bookingamt") String bookingamt,
+            @Field("colorid") String colorid,
+            @Field("sizeid") String sizeid,
             @Field("qty") String qty,
             @Field("totalamount") String tamt
     );
-
     @GET("api/cart.php")
     Call<CartList> getCart(@Query("uid") String uid);
 
@@ -205,6 +204,31 @@ public interface ApiService {
             @Field("amount") String dpAmt
     );
 
+    @FormUrlEncoded
+    @POST("cate/review-post.php")
+    Call<SignupResponse> applyRating(@Field("uid") String uid,
+                                     @Field("oid") String oid,
+                                     @Field("pid") String pid,
+                                     @Field("rating") String rate,
+                                     @Field("msg") String msg);
+
+    @FormUrlEncoded
+    @POST("cate/cancelorder.php")
+    Call<SignupResponse> cancelOrder(@Field("cancelid") String cid,
+                                     @Field("cancelpid") String cpid,
+                                     @Field("canceluid") String cuid,
+                                     @Field("creason") String creason,
+                                     @Field("cancelmsg") String cmsg,
+                                     @Field("canceloid") String coid);
+
+    @FormUrlEncoded
+    @POST("cate/returnorder.php")
+    Call<SignupResponse> returnOrder(@Field("reid") String rid,
+                                     @Field("repid") String rpid,
+                                     @Field("reuid") String rrate,
+                                     @Field("rereason") String rreason,
+                                     @Field("remsg") String rmsg,
+                                     @Field("reoid") String roid);
     @GET("api/companyprofile.php")
     Call<SingleResponse> getAboutUs();
 

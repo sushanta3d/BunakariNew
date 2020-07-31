@@ -1,9 +1,12 @@
 apply plugin: 'com.android.application'
 def Base_URL = "BASE_URL"
 
+def Merchant_Id = "MERCHANT_ID"
 android.buildTypes.each { type ->
     type.buildConfigField 'String', Base_URL, WEBServiceBaseURL
+    type.buildConfigField 'String', Merchant_Id, Merchant_ID
 }
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -12,8 +15,8 @@ android {
         applicationId "com.bunakari.sambalpurifashion"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.2"
+        versionCode 4
+        versionName "1.4"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true

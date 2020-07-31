@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cartCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="2dp"
@@ -54,8 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/black"
-
+                android:textColor="@color/red"
                 android:layout_toRightOf="@id/imgLayout"
                 android:layout_below="@id/pNameTextView"
                 android:layout_marginTop="7dp"
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:textColor="@color/red"
+                android:textColor="@color/black"
                 android:layout_toRightOf="@id/imgLayout"
                 android:layout_below="@id/priceTextView"
                 android:layout_marginTop="3dp"
@@ -79,7 +79,6 @@
                 android:text="Size :"
                 android:textSize="14sp"
                 android:textColor="@color/darkbrown"
-                android:visibility="gone"
                 android:layout_below="@id/offerPriceTextView"
                 android:layout_toRightOf="@id/imgLayout"
                 android:layout_marginTop="7dp"
@@ -90,7 +89,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:visibility="gone"
                 android:textColor="@color/darkbrown"
                 android:layout_below="@id/offerPriceTextView"
                 android:layout_toRightOf="@id/sizeTitleTextView"
@@ -103,7 +101,6 @@
                 android:layout_height="wrap_content"
                 android:text="Color :"
                 android:textSize="14sp"
-                android:visibility="gone"
                 android:textColor="@color/darkbrown"
                 android:layout_below="@id/sizeTitleTextView"
                 android:layout_toRightOf="@id/imgLayout"
@@ -118,7 +115,6 @@
                 android:layout_toRightOf="@id/colorTitleTextView"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="3dp"
-                android:visibility="gone"
                 app:cardCornerRadius="20dp"
                 android:background="@color/white"/>
 

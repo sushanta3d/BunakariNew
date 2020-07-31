@@ -49,14 +49,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         BasicFunction.showImage(productList.get(position).getImg(),context,holder.proImageView,holder.progressBar);
         holder.proTextView.setText(productList.get(position).getProname());
-        holder.productid.setText("MA00"+productList.get(position).getId());
-        if (productList.get(position).getLikecount() != 0) {
-        holder.likscount.setText(productList.get(position).getLikecount()+" Likes");
-        }
-        else {
+        holder.productid.setText("BUN00"+productList.get(position).getId());
 
-            holder.likscount.setText("Like");
-        }
+
 
         if (productList.get(position).getOffer_price().length() != 0) {
             holder.offerPriceTextView.setText("\u20B9 "+productList.get(position).getPrice());
@@ -83,15 +78,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             holder.likeImageView.setImageResource(R.drawable.thumbupwhite);
         }
 
-        if(productList.get(position).getCategoryid().equalsIgnoreCase("2"))
-        {
 
-            holder.watermark.setVisibility(View.GONE);
-        }
-        else {
-
-            holder.watermark.setVisibility(View.GONE);
-        }
 
     }
 
