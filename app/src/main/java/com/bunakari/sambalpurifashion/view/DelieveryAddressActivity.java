@@ -41,6 +41,7 @@ public class DelieveryAddressActivity extends AppCompatActivity implements Addre
     private AddressAdapter.ItemClickListener itemClickListener;
     private TextView notfoundTextView,addAddressTextView;
     private ProgressBar progressBar;
+
     private SharedPreferences sharedPreferences;
     private String uidString;
     private ArrayList<AddressResponse> addressResponseList;

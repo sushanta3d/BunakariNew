@@ -78,7 +78,7 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:text="Book for this Address"/>
+                android:text="Deliver to this Address"/>
 
             <RelativeLayout
                 android:layout_width="wrap_content"

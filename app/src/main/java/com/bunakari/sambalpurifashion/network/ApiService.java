@@ -168,11 +168,7 @@ public interface ApiService {
             @Field("totalamount") String tamt,
             @Field("totalitem") String titem,
             @Field("paymenttype") String paytype,
-            @Field("addressid") String addressid,
-            @Field("bookingtime") String bookingtime,
-            @Field("bookingdate") String bookingdate,
-            @Field("bookingamt") String bookingamt,
-            @Field("walletamt") String walletamt
+            @Field("addressid") String addressid
     );
 
     @POST("paytm-app/generateChecksum.php")

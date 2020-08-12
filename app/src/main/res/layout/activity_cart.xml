@@ -281,7 +281,7 @@
         android:id="@+id/checkoutTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Book"
+        android:text="Check Out"
         android:textSize="15sp"
         android:textColor="@color/white"
         android:textStyle="bold"
